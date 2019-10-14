@@ -21,7 +21,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-1.jpg}">
+    <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-1.jpg}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -35,19 +35,19 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html" >
+            <a class="nav-link" href="#" th:href="@{/main}">
               <i class="material-icons">dashboard</i>
               <p>首页</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" th:href="@{/process}">
               <i class="material-icons">content_paste</i>
               <p>流程</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" th:href="@{/info}">
               <i class="material-icons">library_books</i>
               <p>合法设备信息库</p>
             </a>
@@ -59,13 +59,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="#" th:href="@{/manage}">
               <i class="material-icons">library_books</i>
               <p>终端设备管理</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
+            <a class="nav-link" href="#" th:href="@{/log}">
               <i class="material-icons">notifications</i>
               <p>攻击检测</p>
             </a>
@@ -693,8 +693,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js" th:src="@{/static/assets/js/core.js}"></script>
   <!-- Library for adding dinamically elements -->
   <script src="../assets/js/plugins/arrive.min.js" th:src="@{/static/assets/js/plugins/arrive.min.js}"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE" th:src="@{/static/assets/js/js.js}"></script>
   <!-- Chartist JS -->
   <script src="../assets/js/plugins/chartist.min.js" th:src="@{/static/assets/js/plugins/chartist.min.js}"></script>
   <!--  Notifications Plugin    -->
