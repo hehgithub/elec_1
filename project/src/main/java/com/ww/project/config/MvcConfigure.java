@@ -17,7 +17,12 @@ public class MvcConfigure implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-            .excludePathPatterns("/","index.html","/user/login");
+            .excludePathPatterns("/","index.html","/user/login").excludePathPatterns("/static/**");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 //    @Bean
 //    public WebMvcConfigurer webMvcConfigurer(){
