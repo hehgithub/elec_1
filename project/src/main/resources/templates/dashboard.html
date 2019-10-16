@@ -157,7 +157,7 @@
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons text-success">local_offer</i>
-                    <a href="#pablo">查看</a>
+                    <a href="#pablo" th:href="@{/info}">查看</a>
                   </div>
                 </div>
               </div>
@@ -176,7 +176,7 @@
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons text-warning">local_offer</i>
-                    <a href="#pablo">查看</a>
+                    <a href="#pablo" th:href="@{/manage}">查看</a>
                   </div>
                 </div>
               </div>
@@ -208,13 +208,13 @@
                   <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
+                  <h4 class="card-title">设备类型占比</h4>
                   <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> 我们将不同类型的设备数量占比反映在图饼中</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                    <i class="material-icons">access_time</i> <a href="#pablo" th:href="@{/info}">查看</a>
                   </div>
                 </div>
               </div>
@@ -225,12 +225,14 @@
                   <div class="ct-chart" id="websiteViewsChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">运行设备类型占比</h4>
+                  <p class="card-category">我们将不同类型的正在运行的设备占比反映在图饼中</p>
+
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    <i class="material-icons">access_time</i>
+                    <a href="#pablo" th:href="@{/manage}">查看</a>
                   </div>
                 </div>
               </div>
@@ -241,12 +243,12 @@
                   <div class="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Completed Tasks</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">不同攻击占比</h4>
+                  <p class="card-category">我们将不同类型的攻击占比反映在图表中</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    <i class="material-icons">access_time</i> <a th:href="@{/log}">查看</a>
                   </div>
                 </div>
               </div>
