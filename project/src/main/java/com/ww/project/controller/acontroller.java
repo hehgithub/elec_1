@@ -25,4 +25,19 @@ public class acontroller {
     public Device getDev(@PathVariable("id") Integer id){
         return deviceMapper.getDevById(id);
     }
+
+    @GetMapping("/c")
+    public Integer allCount(){
+        return logMapper.allCount();
+    }
+
+    @GetMapping("/d")
+    public Integer dosCount(){
+        return logMapper.dosCount();
+    }
+
+    @GetMapping("/e")
+    public Integer devCount(){
+        return deviceMapper.devCount();
+    }
 }

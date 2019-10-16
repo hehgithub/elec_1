@@ -7,6 +7,11 @@ import java.util.List;
 
 @Mapper
 public interface DeviceMapper {
-    public Device getDevById(Integer id);
+    Device getDevById(Integer id);
     List<Device> list();
+    Integer devCount();
+    Integer wdCount();
+    Integer dlCount();
+    Integer routerCount();
+    Integer ipCount();
 }

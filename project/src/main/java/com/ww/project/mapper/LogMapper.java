@@ -14,4 +14,13 @@ public interface LogMapper {
 
     @Select("select * from logback")
     List<log> list();
+
+    @Select("select count(*) from logback")
+    Integer allCount();
+
+    @Select("select count(type) from logback where type='Dos攻击'")
+    Integer dosCount();
+
+    @Select("select count(type) from logback where type='重放攻击'")
+    Integer cfConut();
 }

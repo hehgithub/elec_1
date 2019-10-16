@@ -9,4 +9,10 @@
     <select id="list" resultType="com.ww.project.bean.Device">
         SELECT * FROM device_information
     </select>
+    <select id="devCount" resultType="Integer">
+        SELECT COUNT(*) FROM device_information
+    </select>
+    <select id="wdCount" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器'
+    </select>
 </mapper>
