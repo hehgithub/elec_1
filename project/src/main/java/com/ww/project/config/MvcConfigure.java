@@ -24,15 +24,4 @@ public class MvcConfigure implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
-//    @Bean
-//    public WebMvcConfigurer webMvcConfigurer(){
-//        WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer(){
-//
-//            @Override
-//            public void addInterceptors(InterceptorRegistry registry) {
-//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**");
-//            }
-//        };
-//        return webMvcConfigurer;
-//    }
 }

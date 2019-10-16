@@ -1,38 +1,28 @@
 package com.ww.project.controller;
 
+import com.ww.project.bean.Device;
+import com.ww.project.bean.log;
+import com.ww.project.mapper.DeviceMapper;
+import com.ww.project.mapper.LogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
-
-@Controller
+@RestController
 public class acontroller {
-    @ResponseBody
-    @RequestMapping("/h")
-    public String a(){
-        return "aa";
-    }
+    @Autowired
+    LogMapper logMapper;
 
-    @RequestMapping("/success")
-    public String success(Map<String,Object> map){
-        map.put("hellow","你好");
-        return "success";
+    @GetMapping("/log/{id}")
+    public log getLog(@PathVariable("id") Integer id) {
+
+        return logMapper.getLogById(id);
     }
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    DeviceMapper deviceMapper;
 
-    @ResponseBody
-    @GetMapping("/query")
-    public Map<String,Object> map(){
-        List<Map<String,Object>> list = jdbcTemplate.queryForList("select * from sensor");
-        return list.get(0);
+    @GetMapping("/dev/{id}")
+    public Device getDev(@PathVariable("id") Integer id){
+        return deviceMapper.getDevById(id);
     }
 }
