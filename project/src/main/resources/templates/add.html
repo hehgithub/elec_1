@@ -158,40 +158,46 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
+                  <div align="center">
                   <form>
                     <!-- 复选 -->
-                    <div class="form-group col-md-3">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
+                    <br>
+                    <div class="form-group col-md-5">
+                      <select id="inputState_1" class="form-control" method="getInfo()">
+                        <option selected>设备类型</option>
+                        <option>温度传感器</option>
+                        <option>电流传感器</option>
+                        <option>Router</option>
+                        <option>IP Camera</option>
+                      </select>
+                    </div>
+                    <br>
+                    <div class="form-group col-md-5">
+                      <select id="inputState_2" class="form-control">
+                        <option selected>设备品牌</option>
                         <option>...</option>
                       </select>
                     </div>
-                    <div class="form-group col-md-3">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
+                    <br>
+                    <div class="form-group col-md-5">
+                      <select id="inputState_3" class="form-control">
+                        <option selected>设备型号</option>
                         <option>...</option>
                       </select>
                     </div>
-                    <div class="form-group col-md-3">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                      </select>
+                    <br>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" id="inputAddress_1" placeholder="输入设备MAC">
                     </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    <br>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" id="inputAddress_2" placeholder="输入设备IP">
                     </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <button type="submit" >Submit</button>
+                    <br>
+                    <button type="submit" style="">添加</button>
                     <!---->
                   </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -490,6 +496,21 @@
             });
         });
     });
+</script>
+<script>
+    function getInfo(obj) {
+        // if (obj) {
+        //     $.getJSON("xxx.action", {obj:obj}, function(json){
+        //
+        //         var rightlist= $("select");
+        //         rightlist.empty();
+        //         $.each(json, function (index, entry) {
+        //             child.append("("<option value=\"" + entry["id"] + \">xxxx</option>");
+        //         });
+        //     });
+        // }
+        alert("sss")
+    }
 </script>
 </body>
 
