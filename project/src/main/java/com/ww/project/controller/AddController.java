@@ -9,4 +9,9 @@ public class AddController {
     public String add(){
         return "add";
     }
+
+    @GetMapping("/adddev")
+    public String adddev(){
+        return "add_success";
+    }
 }
