@@ -17,6 +17,9 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" th:href="@{/static/assets/css/material-dashboard.css}"/>
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" th:href="@{/static/assets/demo/demo.css}"/>
+
+  <link rel="stylesheet" href="" th:href="@{/static/bootstrap/css/bootstrap-theme.min.css}">
+  <script src="" th:src="@{/static/bootstrap/js/bootstrap.min.js}" type="application/javascript"></script>
 </head>
 
 <body class="">
@@ -34,7 +37,7 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="nav-item  ">
+        <li class="nav-item">
           <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
@@ -46,23 +49,23 @@
             <p>添加设备</p>
           </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active ">
           <a class="nav-link" href="#" th:href="@{/process}">
             <i class="material-icons">content_paste</i>
             <p>流程</p>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/info}">
             <i class="material-icons">library_books</i>
             <p>合法设备信息库</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#" th:href="@{/iden}">
-            <i class="material-icons">library_books</i>
-            <p>终端身份标识库</p>
-          </a>
+        <a class="nav-link" href="#" th:href="@{/iden}">
+          <i class="material-icons">library_books</i>
+          <p>终端身份标识库</p>
+        </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/manage}">
@@ -84,7 +87,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">合法设备信息库</a>
+          <a class="navbar-brand" href="#pablo">添加设备</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -151,61 +154,44 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">设备信息</h4>
+                <h4 class="card-title ">添加设备</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                    <th>
-                      终端ID
-                    </th>
-                    <th>
-                      设备类型
-                    </th>
-                    <th>
-                      设备品牌
-                    </th>
-                    <th>
-                      设备型号
-                    </th>
-                    <th>
-                      MAC
-                    </th>
-                    <th>
-                      IP
-                    </th>
-                    <th>
-                      操作
-                    </th>
-                    </thead>
-                    <tbody>
-                    <tr th:each="device : ${devices}">
-                        <td th:text="${device.id}"></td>
-                        <td th:text="${device.device_type}"></td>
-                        <td th:text="${device.device_brand}"></td>
-                        <td th:text="${device.device_version}"></td>
-                        <td th:text="${device.mac}"></td>
-                        <td th:text="${device.ip}"></td>
-                        <td class="td-actions text-left"><button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                            <i class="material-icons">close</i>
-                        </button></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">上一页</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">下一页</a>
-                      </li>
-                    </ul>
-                  </nav>
+                  <form>
+                    <!-- 复选 -->
+                    <div class="form-group col-md-3">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputState">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Address</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Address</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <button type="submit" >Submit</button>
+                    <!---->
+                  </form>
                 </div>
               </div>
             </div>

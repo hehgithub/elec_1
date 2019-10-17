@@ -41,6 +41,12 @@
             </a>
           </li>
           <li class="nav-item ">
+            <a class="nav-link" href="#" th:href="@{/add}">
+              <i class="material-icons">content_paste</i>
+              <p>添加设备</p>
+            </a>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link" href="#" th:href="@{/process}">
               <i class="material-icons">content_paste</i>
               <p>流程</p>
@@ -150,7 +156,7 @@
                     <i class="material-icons">smartphone</i>
                   </div>
                   <p class="card-category">合法设备数</p>
-                  <h3 class="card-title">10
+                  <h3 class="card-title" th:text="${devcount}">
                     <small>个</small>
                   </h3>
                 </div>
@@ -169,7 +175,7 @@
                     <i class="material-icons">smartphone</i>
                   </div>
                   <p class="card-category">运行设备数</p>
-                  <h3 class="card-title">8
+                  <h3 class="card-title" th:text="${devvcount}">
                     <small>个</small>
                   </h3>
                 </div>
@@ -188,7 +194,7 @@
                     <i class="material-icons">info_outline</i>
                   </div>
                   <p class="card-category">防御次数</p>
-                  <h3 class="card-title">7
+                  <h3 class="card-title" th:text="${logcount}">
                     <small>次</small>
                   </h3>
                 </div>
@@ -204,13 +210,13 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
+                <div class="card-header card-header-success" style="height: 300px;display:table">
+                  <div id="left" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">设备类型占比</h4>
                   <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> 我们将不同类型的设备数量占比反映在图饼中</p>
+                    <span class="text-success"> </span> 我们将不同类型的设备数量占比反映在图饼中</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -221,8 +227,8 @@
             </div>
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
+                <div class="card-header card-header-warning" style="height: 300px;display:table">
+                  <div id="center" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">运行设备类型占比</h4>
@@ -239,8 +245,8 @@
             </div>
             <div class="col-md-4">
               <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
+                <div class="card-header card-header-danger" style="height: 300px;display:table">
+                  <div id="right" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">不同攻击占比</h4>
@@ -372,6 +378,7 @@
     <!--</div>-->
   <!--</div>-->
   <!--   Core JS Files   -->
+  <script th:src="@{/static/js/echarts.min.js}"></script>
   <script src="../assets/js/core/jquery.min.js" th:src="@{/static/assets/js/core/jquery.min.js}"></script>
   <script src="../assets/js/core/popper.min.js" th:src="@{/static/assets/js/core/popper.min.js}"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js" th:src="@{/static/assets/js/core/bootstrap-material-design.min.js}"></script>
@@ -584,12 +591,170 @@
     });
   </script>
   <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-    });
+      $(document).ready(function () {
+          var myChart = echarts.init(document.getElementById('left'));
+          myChart.showLoading();
+          var names = [];
+          var nums = [];
+          $.ajax({
+              type:"post",
+              async:true,
+              url:"/chart1",
+              data:{},
+              dataType:"json",
+              success: function (result) {
+                  if(result){
+                      for (var i=0;i<result.length;i++){
+                          names.push(result[i].name);
+                          nums.push(result[i].num);
+                      }
+                      myChart.hideLoading();
+                      myChart.setOption({
+                          tooltip: {
+                              trigger: 'item',
+                              formatter: "{a} <br/>{b}: {c} ({d}%)"
+                          },
+                          series: [
+                              {
+                                  name:'设备类型',
+                                  type:'pie',
+                                  radius: ['60%', '30%'],
+                                  itemStyle:{
+                                      normal:{
+                                          labelLine:{
+                                              length:60
+                                          }
+                                      }
+                                  },
+                                  label:{
+                                      normal:{
+                                          show: true
+                                      }
+                                  },
+                                  avoidLabelOverlap:false,
+                                  data:[
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#E15941'}},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#6DB0B7' }},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#155566' }},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#E15941' }},
+                                  ]
+                              }
+                          ]
+                      })
+                  }
+              }
+          })
+      })
+  </script>
+  <script>
+      $(document).ready(function () {
+          var myChart = echarts.init(document.getElementById('center'));
+          myChart.showLoading();
+          var names = [];
+          var nums = [];
+          $.ajax({
+              type:"post",
+              async:true,
+              url:"/chart2",
+              data:{},
+              dataType:"json",
+              success: function (result) {
+                  if(result){
+                      for (var i=0;i<result.length;i++){
+                          names.push(result[i].name);
+                          nums.push(result[i].num);
+                      }
+                      myChart.hideLoading();
+                      myChart.setOption({
+                          tooltip: {
+                              trigger: 'item',
+                              formatter: "{a} <br/>{b}: {c} ({d}%)"
+                          },
+                          series: [
+                              {
+                                  name:'设备类型',
+                                  type:'pie',
+                                  radius: ['60%', '30%'],
+                                  itemStyle:{
+                                      normal:{
+                                          labelLine:{
+                                              length:60
+                                          }
+                                      }
+                                  },
+                                  label:{
+                                      normal:{
+                                          show: true
+                                      }
+                                  },
+                                  avoidLabelOverlap:false,
+                                  data:[
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#E15941'}},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#6DB0B7' }},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#155566' }},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#E15941' }},
+                                  ]
+                              }
+                          ]
+                      })
+                  }
+              }
+          })
+      })
+  </script>
+  <script>
+      $(document).ready(function () {
+          var myChart = echarts.init(document.getElementById('right'));
+          myChart.showLoading();
+          var names = [];
+          var nums = [];
+          $.ajax({
+              type:"post",
+              async:true,
+              url:"/chart3",
+              data:{},
+              dataType:"json",
+              success: function (result) {
+                  if(result){
+                      for (var i=0;i<result.length;i++){
+                          names.push(result[i].name);
+                          nums.push(result[i].num);
+                      }
+                      myChart.hideLoading();
+                      myChart.setOption({
+                          tooltip: {
+                              trigger: 'item',
+                              formatter: "{a} <br/>{b}: {c} ({d}%)"
+                          },
+                          series: [
+                              {
+                                  name:'攻击类型',
+                                  type:'pie',
+                                  radius: ['60%', '30%'],
+                                  itemStyle:{
+                                      normal:{
+                                          labelLine:{
+                                              length:60
+                                          }
+                                      }
+                                  },
+                                  label:{
+                                      normal:{
+                                          show: true
+                                      }
+                                  },
+                                  avoidLabelOverlap:false,
+                                  data:[
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#E15941'}},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#6DB0B7' }},
+                                  ]
+                              }
+                          ]
+                      })
+                  }
+              }
+          })
+      })
   </script>
 </body>
-
 </html>

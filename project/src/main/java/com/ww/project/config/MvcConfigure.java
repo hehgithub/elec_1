@@ -10,15 +10,15 @@ public class MvcConfigure implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry){
-        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/").setViewName("test");
         registry.addViewController("/main.html").setViewName("dashboard");
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-            .excludePathPatterns("/","index.html","/user/login").excludePathPatterns("/static/**");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//            .excludePathPatterns("/","index.html","/user/login").excludePathPatterns("/static/**");
+//    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

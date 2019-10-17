@@ -12,7 +12,31 @@
     <select id="devCount" resultType="Integer">
         SELECT COUNT(*) FROM device_information
     </select>
+    <select id="devvCount" resultType="Integer">
+        SELECT COUNT(status) FROM device_information WHERE status='运行'
+    </select>
     <select id="wdCount" resultType="Integer">
         SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器'
+    </select>
+    <select id="dlCount" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='电流传感器'
+    </select>
+    <select id="routerCount" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='Router'
+    </select>
+    <select id="ipCount" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera'
+    </select>
+    <select id="wd1Count" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器' AND status='运行'
+    </select>
+    <select id="dl1Count" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='电流传感器' AND status='运行'
+    </select>
+    <select id="router1Count" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='Router' AND status='运行'
+    </select>
+    <select id="ip1Count" resultType="Integer">
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera' AND status='运行'
     </select>
 </mapper>
