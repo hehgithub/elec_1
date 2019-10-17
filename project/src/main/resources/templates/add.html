@@ -43,13 +43,13 @@
             <p>首页</p>
           </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item  active">
           <a class="nav-link" href="#" th:href="@{/add}">
             <i class="material-icons">content_paste</i>
             <p>添加设备</p>
           </a>
         </li>
-        <li class="nav-item active ">
+        <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/process}">
             <i class="material-icons">content_paste</i>
             <p>流程</p>
@@ -163,7 +163,7 @@
                     <!-- 复选 -->
                     <br>
                     <div class="form-group col-md-5">
-                      <select id="inputState_1" class="form-control" method="getInfo()">
+                      <select id="inputState_1" class="form-control">
                         <option selected>设备类型</option>
                         <option>温度传感器</option>
                         <option>电流传感器</option>
@@ -496,21 +496,6 @@
             });
         });
     });
-</script>
-<script>
-    function getInfo(obj) {
-        // if (obj) {
-        //     $.getJSON("xxx.action", {obj:obj}, function(json){
-        //
-        //         var rightlist= $("select");
-        //         rightlist.empty();
-        //         $.each(json, function (index, entry) {
-        //             child.append("("<option value=\"" + entry["id"] + \">xxxx</option>");
-        //         });
-        //     });
-        // }
-        alert("sss")
-    }
 </script>
 </body>
 
