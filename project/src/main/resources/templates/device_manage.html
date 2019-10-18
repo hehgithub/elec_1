@@ -180,7 +180,7 @@
                       <td th:text="${device.device_type}"></td>
                       <td th:text="${device.status}"></td>
                       <td class="td-actions text-left">
-                        <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" th:onclick="'javascript:btn(\''+${device.id}+'\')'">
                           <i class="material-icons">close</i>
                         </button>
                       </td>
@@ -498,6 +498,11 @@
             });
         });
     });
+</script>
+<script type="text/javascript">
+  function btn(id) {
+      window.location.href = "/delete/"+id;
+  }
 </script>
 </body>
 

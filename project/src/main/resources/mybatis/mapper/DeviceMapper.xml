@@ -43,4 +43,7 @@
         INSERT INTO device_information (device_type,device_brand,device_version,mac,ip) VALUES (
         #{type},#{brand},#{version},#{mac},#{ip})
     </insert>
+    <delete id="DelDev">
+        DELETE FROM device_information WHERE id = #{id}
+    </delete>
 </mapper>

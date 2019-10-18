@@ -22,4 +22,5 @@ public interface DeviceMapper {
     Integer ip1Count();
     void addDev(@Param("type") String type, @Param("brand") String brand,
                 @Param("version") String version, @Param("mac") String mac, @Param("ip") String ip);
+    void DelDev(@Param("id") Integer id);
 }
