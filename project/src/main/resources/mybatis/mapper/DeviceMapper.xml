@@ -39,4 +39,8 @@
     <select id="ip1Count" resultType="Integer">
         SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera' AND status='运行'
     </select>
+    <insert id="addDev">
+        INSERT INTO device_information (device_type,device_brand,device_version,mac,ip) VALUES (
+        #{type},#{brand},#{version},#{mac},#{ip})
+    </insert>
 </mapper>

@@ -2,6 +2,7 @@ package com.ww.project.mapper;
 
 import com.ww.project.bean.Device;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface DeviceMapper {
     Integer dl1Count();
     Integer router1Count();
     Integer ip1Count();
+    void addDev(@Param("type") String type, @Param("brand") String brand,
+                @Param("version") String version, @Param("mac") String mac, @Param("ip") String ip);
 }

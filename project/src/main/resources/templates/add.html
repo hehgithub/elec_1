@@ -159,11 +159,11 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <div align="center">
-                  <form th:action="@{/adddev}" method="get">
+                  <form th:action="@{/adddev}" method="post">
                     <!-- 复选 -->
                     <br>
                     <div class="form-group col-md-5">
-                      <select id="inputState_1" class="form-control">
+                      <select id="inputState_1" class="form-control" name="type">
                         <option selected>设备类型</option>
                         <option>温度传感器</option>
                         <option>电流传感器</option>
@@ -173,25 +173,25 @@
                     </div>
                     <br>
                     <div class="form-group col-md-5">
-                      <select id="inputState_2" class="form-control">
+                      <select id="inputState_2" class="form-control" name="brand">
                         <option selected>设备品牌</option>
                         <option>...</option>
                       </select>
                     </div>
                     <br>
                     <div class="form-group col-md-5">
-                      <select id="inputState_3" class="form-control">
+                      <select id="inputState_3" class="form-control" name="version">
                         <option selected>设备型号</option>
                         <option>...</option>
                       </select>
                     </div>
                     <br>
                     <div class="form-group col-md-5">
-                      <input type="text" class="form-control" id="inputAddress_1" placeholder="输入设备MAC">
+                      <input type="text" name="mac" class="form-control" id="inputAddress_1" placeholder="输入设备MAC">
                     </div>
                     <br>
                     <div class="form-group col-md-5">
-                      <input type="text" class="form-control" id="inputAddress_2" placeholder="输入设备IP">
+                      <input type="text" name="ip" class="form-control" id="inputAddress_2" placeholder="输入设备IP">
                     </div>
                     <br>
                     <button type="submit" style="">添加</button>
