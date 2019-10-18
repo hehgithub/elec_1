@@ -37,10 +37,6 @@ public class acontroller {
         return logMapper.allCount();
     }
 
-    @GetMapping("/d")
-    public Integer dosCount(){
-        return logMapper.dosCount();
-    }
 
     @GetMapping("/e")
     public Integer devCount(){

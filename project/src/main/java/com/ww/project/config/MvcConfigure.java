@@ -11,6 +11,7 @@ public class MvcConfigure implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("test");
+        registry.addViewController("/py").setViewName("index");
         registry.addViewController("/main.html").setViewName("dashboard");
     }
 
