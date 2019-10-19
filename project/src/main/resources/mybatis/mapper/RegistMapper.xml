@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ww.project.mapper.RegistMapper">
+    <select id="getNewRegist" resultType="com.ww.project.bean.Regist">
+        SELECT * FROM `regist` WHERE id = (SELECT MAX(id) FROM `regist`)
+    </select>
+</mapper>

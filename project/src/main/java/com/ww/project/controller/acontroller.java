@@ -2,10 +2,12 @@ package com.ww.project.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.ww.project.bean.Device;
+import com.ww.project.bean.Regist;
 import com.ww.project.bean.log;
 import com.ww.project.bean.test;
 import com.ww.project.mapper.DeviceMapper;
 import com.ww.project.mapper.LogMapper;
+import com.ww.project.mapper.RegistMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
