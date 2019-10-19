@@ -261,26 +261,6 @@
   <!--</div>-->
 <!--</div>-->
 <!--   Core JS Files   -->
-<script type="text/javascript" src="js/jquery.min.js" th:src="@{/static/process/js/jquery.min.js}"></script>
-<script type="text/javascript" src="js/flow.js" th:src="@{/static/process/js/flow.js}"></script>
-<script type="text/javascript">
-    var myAlert = document.getElementById("alert");
-
-    var myMask=document.getElementById('mask');
-
-    $("#content a").click(function(){
-        myMask.style.display="block";
-        myAlert.style.display = "block";
-
-        document.body.style.overflow = "hidden";
-    })
-
-    $(".close").click(function(){
-        myAlert.style.display = "none";
-        myMask.style.display = "none";
-    })
-</script>
-<!-- -->
 <script src="../assets/js/core/jquery.min.js" th:src="@{/static/assets/js/core/jquery.min.js}"></script>
 <script src="../assets/js/core/popper.min.js" th:src="@{/static/assets/js/core/popper.min.js}"></script>
 <script src="../assets/js/core/bootstrap-material-design.min.js" th:src="@{/static/assets/js/core/bootstrap-material-design.min.js}"></script>

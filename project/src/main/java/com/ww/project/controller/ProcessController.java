@@ -9,12 +9,17 @@ public class ProcessController {
 
     @GetMapping("/process")
     public String list(){
-        return "process1";
+        return "process";
     }
 
     @PostMapping("/process_register")
-    public String process_1()
+    public String process_register()
     {
-        return "process_1";
+        return "process_register";
+    }
+
+    @PostMapping("/process_trans")
+    public String process_trans(){
+        return "process_trans";
     }
 }
