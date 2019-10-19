@@ -17,55 +17,14 @@
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" th:href="@{/static/assets/css/material-dashboard.css}"/>
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" th:href="@{/static/assets/demo/demo.css}"/>
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" th:href="@{/static/process/css/bootstrap.css}"/>
-  <link href="css/flow.css" rel="stylesheet" type="text/css" th:href="@{/static/process/css/flow.css}"/>
+
   <link rel="stylesheet" href="" th:href="@{/static/bootstrap/css/bootstrap-theme.min.css}">
-  <style>
-    #alert {
-      z-index: 2;
-      border: 1px solid rgba(0,0,0,.2);
-      width: 598px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 5px 15px rgba(0,0,0,.5);
-      background: #fff;
-      z-index: 1000;
-      position: absolute;
-      left: 50%;
-      top: 15%;
-      margin-left: -299px;
-      display: none;
-    }
-
-    .model-head {
-      padding: 15px;
-      color: #73879C;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    .close {
-      padding: 0;
-      cursor: pointer;
-      background: 0 0;
-      border: 0;
-      float: right;
-      font-size: 14px !important;
-      font-weight: 700;
-      text-shadow: 0 1px 0 #fff;
-      opacity: 0.4;
-      margin-top: 5px;
-    }
-
-    .model-content {
-      position: relative;
-      padding: 15px;
-    }
-  </style>
   <script src="" th:src="@{/static/bootstrap/js/bootstrap.min.js}" type="application/javascript"></script>
 </head>
 
 <body class="">
 <div class="wrapper ">
-  <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-1.jpg}">
+  <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-3.jpg}">
     <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -97,12 +56,6 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#" th:href="@{/process}">
-            <i class="material-icons">content_paste</i>
-            <p>流程1</p>
-          </a>
-        </li>
-        <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/info}">
             <i class="material-icons">library_books</i>
             <p>合法设备信息库</p>
@@ -122,7 +75,7 @@
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/log}">
-            <i class="material-icons">library_books</i>
+            <i class="material-icons">notifications</i>
             <p>攻击检测</p>
           </a>
         </li>
@@ -205,70 +158,27 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:36px;" href="#">终端设备注册申请流程</a> </div>
-
-        <div id="alert" class="">
-          <div class="model-head">
-            <span class="close">&times;</span>
-            <h4 class="modal-title">终端设备注册申请流程</h4>
-          </div>
-          <div class="model-content">
-            <div class="main">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="flow">
-                    <div class="flowListBox"> </div>
+                  <div align="center">
+                    <h2>是否有终端设备接入</h2>
+                    <br><br>
+                    <h3>有设备接入,请求通信</h3><br>
+                    <form th:action="@{/process_register}" method="post">
+                      <input type="hidden"/>
+                      <button type="submit" rel="tooltip" class="btn btn-round">
+                        <small style="font-size: large">终端设备注册申请流程</small>
+                      </button></form><br>
+                    <form>
+                      <input type="hidden" name="_method" value="delete"/>
+                      <button type="submit" rel="tooltip" class="btn btn-round">
+                        <small style="font-size: large">终端设备认证通信流程</small>
+                      </button></form>
                   </div>
                 </div>
-                <div class="col-md-12" id="flowDiv">
-                  <ol id="iList">
-                    <div id="contA">
-                      <p>通过设备识别获取的设备信息属性device_inf</p>
-                    </div>
-                    <div class="contentList" id="contB">
-                      <p>获得的MAC/IP：</p>
-                    </div>
-                    <div class="contentList" id="contC">
-                      <P>终端设备是否合法（Y/N）：</P>
-                    </div>
-                    <div class="contentList" id="contD">
-                      <p>生成的终端设备身份标识为：</p>
-                    </div>
-                    <div class="contentList" id="contE">
-                      <p>密钥生成时的会话密钥为：</p>
-                      <p>生成的签名私钥为：</p>
-                      <p>生成的加密私钥为：</p>
-                    </div>
-                    <div class="contentList" id="contF">
-                      <p>密钥分发</p>
-                    </div>
-
-                  </ol>
-                </div>
               </div>
             </div>
           </div>
-
-          <div class="foot-btn">
-            <button type="button" class="btn btn-primary" id="btnBack">上一步</button>
-            <button type="button" class="btn btn-default"  style="float:right; display:none" id="btnok">完成</button>
-            <button type="button" class="btn btn-success"  style="float:right; margin-right:10px;" id="btnNext">下一步</button>
-          </div>
         </div>
-        <div id="mask"></div>
       </div>
-
-
-
-
-
     </div>
     <footer class="footer">
       <div class="container-fluid">
@@ -282,7 +192,95 @@
     </footer>
   </div>
 </div>
+<!--<div class="fixed-plugin">-->
+  <!--<div class="dropdown show-dropdown">-->
+    <!--<a href="#" data-toggle="dropdown">-->
+      <!--<i class="fa fa-cog fa-2x"> </i>-->
+    <!--</a>-->
+    <!--<ul class="dropdown-menu">-->
+      <!--<li class="header-title"> Sidebar Filters</li>-->
+      <!--<li class="adjustments-line">-->
+        <!--<a href="javascript:void(0)" class="switch-trigger active-color">-->
+          <!--<div class="badge-colors ml-auto mr-auto">-->
+            <!--<span class="badge filter badge-purple" data-color="purple"></span>-->
+            <!--<span class="badge filter badge-azure" data-color="azure"></span>-->
+            <!--<span class="badge filter badge-green" data-color="green"></span>-->
+            <!--<span class="badge filter badge-warning" data-color="orange"></span>-->
+            <!--<span class="badge filter badge-danger" data-color="danger"></span>-->
+            <!--<span class="badge filter badge-rose active" data-color="rose"></span>-->
+          <!--</div>-->
+          <!--<div class="clearfix"></div>-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li class="header-title">Images</li>-->
+      <!--<li class="active">-->
+        <!--<a class="img-holder switch-trigger" href="javascript:void(0)">-->
+          <!--<img src="../assets/img/sidebar-1.jpg" alt="" th:src="@{/static/assets/img/sidebar-1.jpg}">-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a class="img-holder switch-trigger" href="javascript:void(0)">-->
+          <!--<img src="../assets/img/sidebar-2.jpg" alt="" th:src="@{/static/assets/img/sidebar-2.jpg}">-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a class="img-holder switch-trigger" href="javascript:void(0)">-->
+          <!--<img src="../assets/img/sidebar-3.jpg" alt="" th:src="@{/static/assets/img/sidebar-3.jpg}">-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a class="img-holder switch-trigger" href="javascript:void(0)">-->
+          <!--<img src="../assets/img/sidebar-4.jpg" alt="" th:src="@{/static/assets/img/sidebar-4.jpg}">-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li class="button-container">-->
+        <!--<a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>-->
+      <!--</li>-->
+      <!--&lt;!&ndash; <li class="header-title">Want more components?</li>-->
+          <!--<li class="button-container">-->
+              <!--<a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">-->
+                <!--Get the pro version-->
+              <!--</a>-->
+          <!--</li> &ndash;&gt;-->
+      <!--<li class="button-container">-->
+        <!--<a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">-->
+          <!--View Documentation-->
+        <!--</a>-->
+      <!--</li>-->
+      <!--<li class="button-container github-star">-->
+        <!--<a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>-->
+      <!--</li>-->
+      <!--<li class="header-title">Thank you for 95 shares!</li>-->
+      <!--<li class="button-container text-center">-->
+        <!--<button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>-->
+        <!--<button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>-->
+        <!--<br>-->
+        <!--<br>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<!--   Core JS Files   -->
+<script type="text/javascript" src="js/jquery.min.js" th:src="@{/static/process/js/jquery.min.js}"></script>
+<script type="text/javascript" src="js/flow.js" th:src="@{/static/process/js/flow.js}"></script>
+<script type="text/javascript">
+    var myAlert = document.getElementById("alert");
 
+    var myMask=document.getElementById('mask');
+
+    $("#content a").click(function(){
+        myMask.style.display="block";
+        myAlert.style.display = "block";
+
+        document.body.style.overflow = "hidden";
+    })
+
+    $(".close").click(function(){
+        myAlert.style.display = "none";
+        myMask.style.display = "none";
+    })
+</script>
+<!-- -->
 <script src="../assets/js/core/jquery.min.js" th:src="@{/static/assets/js/core/jquery.min.js}"></script>
 <script src="../assets/js/core/popper.min.js" th:src="@{/static/assets/js/core/popper.min.js}"></script>
 <script src="../assets/js/core/bootstrap-material-design.min.js" th:src="@{/static/assets/js/core/bootstrap-material-design.min.js}"></script>
@@ -323,24 +321,7 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript" th:src="@{/static/assets/js/material-dashboard.js}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js" th:src="@{/static/assets/demo/demo.js}"></script>
-<script type="text/javascript" src="js/jquery.min.js" th:src="@{/static/process/js/jquery.min.js}"></script>
-<script type="text/javascript" src="js/flow.js" th:src="@{/static/process/js/flow.js}"></script>
-
-
-<script type="text/javascript">
-    var myAlert = document.getElementById("alert");
-    var myMask=document.getElementById('mask');
-    $("#content a").click(function(){
-        myMask.style.display="block";
-        myAlert.style.display = "block";
-        document.body.style.overflow = "hidden";
-    })
-
-    $(".close").click(function(){
-        myAlert.style.display = "none";
-        myMask.style.display = "none";
-    })
-
+<script>
     $(document).ready(function() {
         $().ready(function() {
             $sidebar = $('.sidebar');
@@ -511,13 +492,6 @@
         });
     });
 </script>
-
-
-
-
-
-
-
 </body>
 
 </html>

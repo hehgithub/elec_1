@@ -10,15 +10,6 @@
 <link href="css/flow.css" rel="stylesheet" type="text/css" th:href="@{/static/process/css/flow.css}"/>
 
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	font-size: 12px;
-}
-html, body {
-	height: 100%;
-	width: 100%;
-}
 #alert {
 	z-index: 2;
 	border: 1px solid rgba(0,0,0,.2);
@@ -80,8 +71,6 @@ html, body {
 <body>
 
 <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:36px;" href="#">终端设备注册申请流程</a> </div>
-<!--<div id="content2" style="text-align:center;margin:40px auto;"> <a style="font-size:36px;" href="#">终端设备认证通信流程</a> </div>-->
-
 <div id="alert" class="">
 	<div class="model-head">
 		<span class="close">&times;</span>
@@ -116,11 +105,6 @@ html, body {
 		<button type="button" class="btn btn-success"  style="float:right; margin-right:10px;" id="btnNext">下一步</button>
 	</div>
 </div>
-
-
-
-
-
 <div id="mask"></div>
 
 <!--content/--> 
@@ -130,23 +114,20 @@ html, body {
 <script type="text/javascript"> 
 var myAlert = document.getElementById("alert");
 
-var myMask=document.getElementById('mask');  
+var myMask=document.getElementById('mask');
 
-$("#content a").click(function(){  
-	myMask.style.display="block"; 
-	myAlert.style.display = "block";
+$("#content a").click(function(){
+    myMask.style.display="block";
+    myAlert.style.display = "block";
 
-	document.body.style.overflow = "hidden"; 
+    document.body.style.overflow = "hidden";
 })
+
 $(".close").click(function(){
 	myAlert.style.display = "none"; 
 	myMask.style.display = "none"; 
 }) 
 </script>
 
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<!--<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>-->
-<!--<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>-->
-</div>
 </body>
 </html>

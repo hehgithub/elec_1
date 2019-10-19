@@ -2,7 +2,7 @@ var colorList;
 var count;
 
 $(function(){
-  count= 4; 
+  count= 6;
   loadFlow(count);
   checkColor(colorList);
     
@@ -89,6 +89,9 @@ function loadFlowDiv(index){
  if(index==2){$("#contB").removeClass("contentList");$("#contB").siblings().addClass("contentList")}
  if(index==3){$("#contC").removeClass("contentList");$("#contC").siblings().addClass("contentList")}
  if(index==4){$("#contD").removeClass("contentList");$("#contD").siblings().addClass("contentList")}
+ if(index==5){$("#contE").removeClass("contentList");$("#contE").siblings().addClass("contentList")}
+ if(index==6){$("#contF").removeClass("contentList");$("#contF").siblings().addClass("contentList")}
+
 
 
 }
