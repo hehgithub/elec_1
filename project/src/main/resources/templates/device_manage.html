@@ -21,7 +21,7 @@
 
 <body class="">
 <div class="wrapper ">
-  <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-1.jpg}">
+  <div class="sidebar" data-color="green" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" th:data-image="@{/static/assets/img/sidebar-3.jpg}">
     <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -72,7 +72,7 @@
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/log}">
-            <i class="material-icons">library_books</i>
+            <i class="material-icons">notifications</i>
             <p>攻击检测</p>
           </a>
         </li>
@@ -179,10 +179,11 @@
                       <td th:text="${device.iden_id}"></td>
                       <td th:text="${device.device_type}"></td>
                       <td th:text="${device.status}"></td>
-                      <td class="td-actions text-left">
-                        <button type="button" rel="tooltip" class="btn btn-danger btn-round" th:onclick="'javascript:btn(\''+${device.id}+'\')'">
+                      <td class="td-actions text-left"><form th:action="@{/del/}+${device.id}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" rel="tooltip" class="btn btn-danger btn-round">
                           <i class="material-icons">close</i>
-                        </button>
+                        </button></form>
                       </td>
                     </tr>
                     </tbody>
@@ -498,11 +499,6 @@
             });
         });
     });
-</script>
-<script type="text/javascript">
-  function btn(id) {
-      window.location.href = "/delete/"+id;
-  }
 </script>
 </body>
 

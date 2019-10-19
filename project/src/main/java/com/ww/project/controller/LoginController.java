@@ -31,7 +31,7 @@ public class LoginController {
             model.addAttribute("devcount", deviceMapper.devCount());
             model.addAttribute("devvcount",deviceMapper.devvCount());
             model.addAttribute("logcount",logMapper.allCount());
-            return "dashboard";
+            return "redirect:/main";
         }else {
             map.put("msg","用户名密码错误");
             return "login";
