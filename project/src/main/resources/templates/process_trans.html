@@ -26,15 +26,6 @@
   <script src="" th:src="@{/static/bootstrap/js/bootstrap.min.js}" type="application/javascript"></script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-size: 12px;
-    }
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
     #alert {
       z-index: 2;
       border: 1px solid rgba(0,0,0,.2);
@@ -67,28 +58,9 @@
       opacity: 0.4;
       margin-top: 5px;
     }
-    #close:hover {
-      cursor: pointer;
-      color: #000;
-    }
-    #mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: #000;
-      opacity: 0.3;
-      display: none;
-      z-index: 1;
-    }
     .model-content {
       position: relative;
       padding: 15px;
-    }
-    .model-foot {
-      padding: 15px;
-      text-align: right;
     }
   </style>
 </head>
@@ -153,12 +125,12 @@
       </ul>
     </div>
   </div>
-  <div class="main-panel">
+  <div class="main-panel" style="background-color: #E5E5E5">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">流程</a>
+          <a class="navbar-brand" href="#pablo" style="font-size: 18px">流程</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -231,12 +203,12 @@
                 <div class="table-responsive">
                   <div align="center">
 
-                    <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:36px;" th:href="@{#}">点击遮罩层</a> </div>
+                    <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:22px;" th:href="@{#}" class="btn btn-round">终端设备认证通信</a> </div>
 
                     <div id="alert" class="">
                       <div class="model-head">
                         <span class="close">&times;</span>
-                        <h4 class="modal-title">model弹出层</h4>
+                        <h4 class="modal-title">终端设备认证通信</h4>
                       </div>
                       <div class="model-content">
                         <div class="main">
@@ -261,8 +233,8 @@
                       </div>
 
                       <div class="foot-btn">
-                        <button type="button" class="btn btn-primary" id="btnBack" style="position: absolute;left: 20px;">上一步</button>
-                        <button type="button" class="btn btn-default"  style="float:right; display:none" id="btnok">完成</button>
+                        <button type="button" class="btn btn-success" id="btnBack" style="position: absolute;left: 20px;">上一步</button>
+                        <!--<button type="button" class="btn btn-round"  style="float:right; display:none" id="btnok">完成</button>-->
                         <button type="button" class="btn btn-success"  style="float:right; margin-right:10px;" id="btnNext">下一步</button>
                       </div>
                     </div>
