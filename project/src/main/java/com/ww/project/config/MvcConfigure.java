@@ -16,11 +16,11 @@ public class MvcConfigure implements WebMvcConfigurer {
         registry.addViewController("/manage.html").setViewName("manage");
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//            .excludePathPatterns("/","index.html","/user/login").excludePathPatterns("/static/**");
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+            .excludePathPatterns("/","index.html","/user/login").excludePathPatterns("/static/**");
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

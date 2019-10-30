@@ -1,8 +1,10 @@
 package com.ww.project.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Regist {
     public Integer id;
     public String device_inf;

@@ -161,7 +161,7 @@
                   <div align="center">
                     <h2>是否有终端设备接入</h2>
                     <br><br>
-                    <h3 th:text="${iff.there_connection}+${iff.if_register_or_socket}"></h3><br>
+                    <h3 th:text="${iff.there_connection}+','+${iff.if_register_or_socket}"></h3><br>
                     <form th:action="@{/process_register}" method="post">
                       <input type="hidden"/>
                       <button type="submit" rel="tooltip" class="btn btn-round">

@@ -18,7 +18,7 @@ public interface LogMapper {
     @Select("select count(*) from logback")
     Integer allCount();
 
-    @Select("select count(type) from logback where type='Dos攻击'")
+    @Select("select count(type) from logback where type='假冒攻击'")
     Integer dosCount();
 
     @Select("select count(type) from logback where type='重放攻击'")

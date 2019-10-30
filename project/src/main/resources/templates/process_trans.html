@@ -222,37 +222,69 @@
                               <ol id="iList">
                                 <div class="contentList" id="contA">
                                   <h5>认证过程开始</h5>
-                                  <h5>接收终端设备发来的随机数密文:(receive_costomer_dense)</h5>
+                                  <h5>接收终端设备发来的随机数密文:</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.receive_costomer_dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <h5>网关端使用终端公钥进行解密得：(costomer_public_solve)</h5>
+                                  <h5>网关端使用终端公钥进行解密得：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.costomer_public_solve}"></h5>
                                 </div>
                                 <div class="contentList" id="contC">
-                                  <h5>网关使用将其自身私钥加密，并将该密文发送给终端设备，用于随机数验证</h5>
-                                  <p>server_public_dense</p>
+                                  <h5>网关使用将其自身私钥加密，并将该密文发送给终端设备，用于随机数验证</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.sever_public_dense}"></h5>
                                   <h5>一次认证结束</h5>
                                 </div>
                                 <div class="contentList" id="contD">
-                                  <h5>网关端生成随机数：(random)</h5>
-                                  <h5>用自身公钥对其加密后得：sever_publiv_twice_dense</h5>
+                                  <h5>网关端生成随机数：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.random}"></h5>
+                                  <h5>用自身公钥对其加密后得：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.sever_public_twice_dense}"></h5>
                                   <h5>将密文发送给终端，使其解密再加密发送回来</h5>
                                 </div>
                                 <div class="contentList" id="contE">
-                                  <h5>接收终端发送回来的密文为：receive_costomer2_dense</h5>
+                                  <h5>接收终端发送回来的密文为：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.receive_costomer2_dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contF">
-                                  <h5>网关使用终端公钥将密文解密，获取的明文为：costomwe_private_solve</h5>
+                                  <h5>网关使用终端公钥将密文解密，获取的明文为：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.costomer_private_solve}"></h5>
                                   <h5>解密后的明文与随机数一致，双向认证成功，开始进行通信</h5>
                                 </div>
                                 <div class="contentList" id="contG">
-                                  <h5>通信前所需的设备信息：(ID_sever)和(ID_costomer))</h5>
-                                  <h5>会话密钥：dense</h5>
+                                  <h5>通信前所需的设备信息：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.ID_sever}+'和'+${socket.ID_costomer}"></h5>
+                                  <h5>会话密钥：</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contH">
-                                  <h5>接收到终端设备发来的密文;socket_dense</h5>
+                                  <h5>接收到终端设备发来的密文;</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.socket_dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contI">
-                                  <h5>解密后的明文为;ming</h5>
+                                  <h5>解密后的明文为;</h5><h5 style="width:400px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${socket.ming}"></h5>
                                 </div>
                               </ol>
                             </div>
