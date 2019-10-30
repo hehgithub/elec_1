@@ -61,13 +61,13 @@
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/iden}">
             <i class="material-icons">library_books</i>
-            <p>身份标识管理</p>
+            <p>注册设备管理</p>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/manage}">
             <i class="material-icons">library_books</i>
-            <p>接入设备管理</p>
+            <p>在线设备管理</p>
           </a>
         </li>
         <li class="nav-item active ">
@@ -151,7 +151,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">攻击检测</h4>
+                <h4 class="card-title ">攻击日志</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -167,11 +167,11 @@
                       时间
                     </th>
                     <th>
-                      攻击设备
+                      攻击者
                     </th>
-                    <th>
-                      攻击者MAC
-                    </th>
+                    <!--<th>-->
+                      <!--攻击者MAC-->
+                    <!--</th>-->
                     <th>
                       攻击者IP
                     </th>
@@ -185,7 +185,7 @@
                       <td th:text="${log.type}"></td>
                       <td th:text="${log.date}"></td>
                       <td th:text="${log.dev_type}"></td>
-                      <td th:text="${log.mac}"></td>
+                      <!--<td th:text="${log.mac}"></td>-->
                       <td th:text="${log.ip}"></td>
                       <td th:text="${log.method}"></td>
                     </tr>
