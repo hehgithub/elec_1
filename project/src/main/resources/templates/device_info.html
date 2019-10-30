@@ -151,14 +151,17 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">设备信息</h4>
+                <h4 class="card-title ">合法设备信息</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                     <th>
-                      终端ID
+                      序号
+                    </th>
+                    <th>
+                      实物ID
                     </th>
                     <th>
                       设备类型
@@ -180,7 +183,8 @@
                     </th>
                     </thead>
                     <tbody>
-                    <tr th:each="device : ${devices}">
+                    <tr th:each="device,deviceStart : ${devices}">
+                        <td th:text="${deviceStart.count}"></td>
                         <td th:text="${device.id}"></td>
                         <td th:text="${device.device_type}"></td>
                         <td th:text="${device.device_brand}"></td>
@@ -195,19 +199,19 @@
                     </tr>
                     </tbody>
                   </table>
-                  <!--<nav aria-label="Page navigation example">-->
-                    <!--<ul class="pagination justify-content-center">-->
-                      <!--<li class="page-item disabled">-->
-                        <!--<a class="page-link" href="#" tabindex="-1">上一页</a>-->
-                      <!--</li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                      <!--<li class="page-item">-->
-                        <!--<a class="page-link" href="#">下一页</a>-->
-                      <!--</li>-->
-                    <!--</ul>-->
-                  <!--</nav>-->
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">下一页</a>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>
