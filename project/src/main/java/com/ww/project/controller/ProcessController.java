@@ -30,7 +30,7 @@ public class ProcessController {
     public String list(Model model){
         If iff = ifMapper.getNewIf();
         model.addAttribute("iff", iff);
-        return "iden_history";
+        return "process";
     }
 
     @PostMapping("/process_register")

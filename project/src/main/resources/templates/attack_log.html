@@ -158,7 +158,7 @@
                   <table class="table">
                     <thead class=" text-primary">
                     <th>
-                      ID
+                      序号
                     </th>
                     <th>
                       攻击类型
@@ -167,7 +167,7 @@
                       时间
                     </th>
                     <th>
-                      攻击者
+                      攻击者类型
                     </th>
                     <!--<th>-->
                       <!--攻击者MAC-->
@@ -176,34 +176,34 @@
                       攻击者IP
                     </th>
                     <th>
-                      解决方案
+                      处理结果
                     </th>
                     </thead>
                     <tbody>
-                    <tr th:each="log : ${logs}">
-                      <td th:text="${log.id}"></td>
+                    <tr th:each="log,logStart : ${logs}">
+                      <td th:text="${logStart.count}"></td>
                       <td th:text="${log.type}"></td>
-                      <td th:text="${log.date}"></td>
-                      <td th:text="${log.dev_type}"></td>
+                      <td th:text="${#dates.format(log.date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                      <td th:text="${log.device_type}"></td>
                       <!--<td th:text="${log.mac}"></td>-->
-                      <td th:text="${log.ip}"></td>
-                      <td th:text="${log.method}"></td>
+                      <td th:text="${log.attack_ip}"></td>
+                      <td class="text-danger" th:text="${log.method}"></td>
                     </tr>
                     </tbody>
                   </table>
-                  <!--<nav aria-label="Page navigation example">-->
-                    <!--<ul class="pagination justify-content-center">-->
-                      <!--<li class="page-item disabled">-->
-                        <!--<a class="page-link" href="#" tabindex="-1">上一页</a>-->
-                      <!--</li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                      <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                      <!--<li class="page-item">-->
-                        <!--<a class="page-link" href="#">下一页</a>-->
-                      <!--</li>-->
-                    <!--</ul>-->
-                  <!--</nav>-->
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">下一页</a>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>

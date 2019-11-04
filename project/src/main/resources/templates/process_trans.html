@@ -86,40 +86,40 @@
             <p>首页</p>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#" th:href="@{/add}">
-            <i class="material-icons">content_paste</i>
-            <p>添加设备</p>
-          </a>
-        </li>
-        <li class="nav-item active ">
-          <a class="nav-link" href="#" th:href="@{/process}">
-            <i class="material-icons">content_paste</i>
-            <p>流程</p>
-          </a>
-        </li>
+        <!--<li class="nav-item ">-->
+          <!--<a class="nav-link" href="#" th:href="@{/add}">-->
+            <!--<i class="material-icons">content_paste</i>-->
+            <!--<p>添加设备</p>-->
+          <!--</a>-->
+        <!--</li>-->
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/info}">
             <i class="material-icons">library_books</i>
             <p>合法设备信息库</p>
           </a>
         </li>
+        <li class="nav-item active ">
+          <a class="nav-link" href="#" th:href="@{/process}">
+            <i class="material-icons">content_paste</i>
+            <p>认证历史记录</p>
+          </a>
+        </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/iden}">
             <i class="material-icons">library_books</i>
-            <p>终端身份标识库</p>
+            <p>注册设备管理</p>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/manage}">
             <i class="material-icons">library_books</i>
-            <p>终端设备管理</p>
+            <p>在线设备管理</p>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/log}">
             <i class="material-icons">notifications</i>
-            <p>攻击检测</p>
+            <p>攻击日志</p>
           </a>
         </li>
       </ul>
@@ -228,13 +228,13 @@
                                                                overflow: hidden;" th:text="${socket.receive_costomer_dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <h5>网关端使用终端公钥进行解密得：</h5><h5 style="width:400px;
+                                  <h5>网关端使用网关私钥钥进行解密得：</h5><h5 style="width:400px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${socket.costomer_public_solve}"></h5>
                                 </div>
                                 <div class="contentList" id="contC">
-                                  <h5>网关使用将其自身私钥加密，并将该密文发送给终端设备，用于随机数验证</h5><h5 style="width:400px;
+                                  <h5>网关使用将设备 公钥加密，并将该密文发送给终端设备，用于随机数验证</h5><h5 style="width:400px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${socket.sever_public_dense}"></h5>
@@ -245,7 +245,7 @@
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${socket.random}"></h5>
-                                  <h5>用自身公钥对其加密后得：</h5><h5 style="width:400px;
+                                  <h5>用设备公钥对其加密后得：</h5><h5 style="width:400px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${socket.sever_public_twice_dense}"></h5>
@@ -258,7 +258,7 @@
                                                                overflow: hidden;" th:text="${socket.receive_costomer2_dense}"></h5>
                                 </div>
                                 <div class="contentList" id="contF">
-                                  <h5>网关使用终端公钥将密文解密，获取的明文为：</h5><h5 style="width:400px;
+                                  <h5>网关使用网关私钥将密文解密，获取的明文为：</h5><h5 style="width:400px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${socket.costomer_private_solve}"></h5>

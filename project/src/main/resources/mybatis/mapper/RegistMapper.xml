@@ -6,4 +6,7 @@
     <select id="getNewRegist" resultType="com.ww.project.bean.Regist">
         SELECT * FROM `regist` WHERE id = (SELECT MAX(id) FROM `regist`)
     </select>
+    <select id="getTime" resultType="java.util.Date">
+        SELECT MAX(time) FROM regist WHERE biaoshi=#{iden_id}
+    </select>
 </mapper>

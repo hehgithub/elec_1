@@ -19,8 +19,11 @@ public interface LogMapper {
     Integer allCount();
 
     @Select("select count(type) from logback where type='假冒攻击'")
-    Integer dosCount();
+    Integer jmCount();
 
     @Select("select count(type) from logback where type='重放攻击'")
     Integer cfConut();
+
+    @Select("select count(type) from logback where type='中间人攻击'")
+    Integer zjrConut();
 }

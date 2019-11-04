@@ -60,8 +60,9 @@ public class DashboardController {
     @ResponseBody
     public String logCount(){
         List<Count> countList = new ArrayList<>();
-        countList.add(new Count("Dos攻击",logMapper.dosCount()));
+        countList.add(new Count("假冒攻击",logMapper.jmCount()));
         countList.add(new Count("重放攻击",logMapper.cfConut()));
+        countList.add(new Count("中间人攻击",logMapper.zjrConut()));
         String json = JSON.toJSONString(countList);
         return json;
     }

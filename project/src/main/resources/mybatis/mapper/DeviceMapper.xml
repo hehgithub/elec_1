@@ -13,7 +13,7 @@
         SELECT COUNT(*) FROM device_information
     </select>
     <select id="devvCount" resultType="Integer">
-        SELECT COUNT(status) FROM device_information WHERE status='运行'
+        SELECT COUNT(status) FROM device_information WHERE status='成功'
     </select>
     <select id="wdCount" resultType="Integer">
         SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器'
@@ -28,22 +28,34 @@
         SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera'
     </select>
     <select id="wd1Count" resultType="Integer">
-        SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器' AND status='运行'
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='温度传感器' AND status='成功'
     </select>
     <select id="dl1Count" resultType="Integer">
-        SELECT COUNT(device_type) FROM device_information WHERE device_type='电流传感器' AND status='运行'
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='电流传感器' AND status='成功'
     </select>
     <select id="router1Count" resultType="Integer">
-        SELECT COUNT(device_type) FROM device_information WHERE device_type='Router' AND status='运行'
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='Router' AND status='成功'
     </select>
     <select id="ip1Count" resultType="Integer">
-        SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera' AND status='运行'
+        SELECT COUNT(device_type) FROM device_information WHERE device_type='IP Camera' AND status='成功'
     </select>
     <insert id="addDev">
         INSERT INTO device_information (device_type,device_brand,device_version,mac,ip) VALUES (
         #{type},#{brand},#{version},#{mac},#{ip})
     </insert>
     <delete id="DelDev">
-        DELETE FROM device_information WHERE id = #{id}
+        DELETE FROM device_information WHERE mac = #{mac}
     </delete>
+    <select id="register_dev" resultType="com.ww.project.bean.Device">
+        SELECT * FROM device_information WHERE iden_id IS NOT NULL
+    </select>
+    <select id="online_dev" resultType="com.ww.project.bean.Device">
+        SELECT * FROM device_information WHERE status = '上线'
+    </select>
+    <update id="DelRegDev">
+        UPDATE device_information SET iden_id=NULL, register_time=NULL WHERE mac=#{mac}
+    </update>
+    <update id="DelOnDev">
+        UPDATE device_information SET online_time=NULL, status=NULL WHERE mac=#{mac}
+    </update>
 </mapper>

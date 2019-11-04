@@ -3,6 +3,8 @@ package com.ww.project.bean;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 public class Regist {
@@ -14,4 +16,5 @@ public class Regist {
     public String secret;
     public String name_key;
     public String dense;
+    public Date time;
 }
