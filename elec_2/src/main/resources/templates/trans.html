@@ -87,7 +87,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">设备注册管理</a>
+          <a class="navbar-brand" href="#pablo">加密传输</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -154,7 +154,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">设备注册管理</h4>
+                <h4 class="card-title ">加密传输</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -167,44 +167,27 @@
                       <!--实物ID-->
                     <!--</th>-->
                     <th>
-                      设备身份标识ID
+                      公钥
                     </th>
                     <th>
-                      类型
+                      密文
                     </th>
                     <th>
-                      品牌
+                      明文
                     </th>
                     <th>
-                      型号
-                    </th>
-                    <th>
-                      IP
-                    </th>
-                    <th>
-                      注册时间
-                    </th>
-                    <th>
-                      注销
+                      时间
                     </th>
                     </thead>
                     <tbody>
-                    <!--<tr th:each="device,deviceStart : ${devices}">-->
-                      <!--<td th:text="${deviceStart.count}" ></td>-->
-                      <!--&lt;!&ndash;<td th:text="${device.id}"></td>&ndash;&gt;-->
-                      <!--<td th:text="${device.iden_id}"></td>-->
-                      <!--<td th:text="${device.device_type}"></td>-->
-                      <!--<td th:text="${device.device_brand}"></td>-->
-                      <!--<td th:text="${device.device_version}"></td>-->
-                      <!--<td th:text="${device.ip}"></td>-->
-                      <!--<td th:text="${#dates.format(device.register_time, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
-                      <!--<td class="td-actions text-left"><form th:action="@{/delreg/}+${device.mac}" method="get">-->
-                        <!--<input type="hidden" name="_method" value="delete"/>-->
-                        <!--<button type="submit" rel="tooltip" class="btn btn-danger btn-round">-->
-                          <!--<i class="material-icons">close</i>-->
-                        <!--</button></form>-->
-                      <!--</td>-->
-                    <!--</tr>-->
+                    <tr th:each="socket,socketStart : ${sockets}">
+                      <td th:text="${socketStart.count}" ></td>
+                      <!--<td th:text="${device.id}"></td>-->
+                      <td th:text="${socket.ID_costomer}"></td>
+                      <td th:text="${socket.socket_dense}"></td>
+                      <td th:text="${socket.ming}"></td>
+                      <td th:text="${#dates.format(socket.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    </tr>
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation example">

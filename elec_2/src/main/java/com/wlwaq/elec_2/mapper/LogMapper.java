@@ -9,9 +9,6 @@ import java.util.List;
 @Mapper
 public interface LogMapper {
 
-    @Select("select * from logback where id=#{id}")
-    log getLogById(Integer id);
-
     @Select("select * from logback")
     List<log> list();
 

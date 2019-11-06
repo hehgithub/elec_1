@@ -5,11 +5,8 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class log {
-    private Integer id;
-    private String type;
-    private Date date;
+public class IdenDev {
     private String device_type;
     private String ip;
-    private String method;
+    private Date time;
 }

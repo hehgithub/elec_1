@@ -161,8 +161,8 @@
                   <div class="card-icon">
                     <i class="material-icons">smartphone</i>
                   </div>
-                  <p class="card-category">合法设备数</p>
-                  <h3 class="card-title" >21
+                  <p class="card-category">注册设备数</p>
+                  <h3 class="card-title" >2
                     <!--<h3 class="card-title" th:text="${devcount}">-->
                     <small>个</small>
                   </h3>
@@ -181,10 +181,9 @@
                   <div class="card-icon">
                     <i class="material-icons">smartphone</i>
                   </div>
-                  <p class="card-category">运行设备数</p>
-                  <h3 class="card-title" >21
+                  <p class="card-category">待注册设备数</p>
+                  <h3 class="card-title" >10
                     <!--<h3 class="card-title" th:text="${devvcount}">-->
-                    <small>个</small>
                   </h3>
                 </div>
                 <div class="card-footer">
@@ -202,9 +201,8 @@
                     <i class="material-icons">info_outline</i>
                   </div>
                   <p class="card-category">防御次数</p>
-                  <h3 class="card-title" >24
-                    <!--<h3 class="card-title" th:text="${logcount}">-->
-                    <small>次</small>
+                  <!--<h3 class="card-title" >24-->
+                  <h3 class="card-title" th:text="${logcount}+次">
                   </h3>
                 </div>
                 <div class="card-footer">
@@ -223,9 +221,9 @@
                   <div id="left" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">设备类型占比</h4>
+                  <h4 class="card-title">注册设备类型占比</h4>
                   <p class="card-category">
-                    <span class="text-success"> </span> 我们将不同类型的设备数量占比反映在图饼中</p>
+                    <span class="text-success"> </span> 我们将不同类型的注册设备数量占比反映在图饼中</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -240,7 +238,7 @@
                   <div id="center" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">运行设备类型占比</h4>
+                  <h4 class="card-title">待注册设备类型占比</h4>
                   <p class="card-category">我们将不同类型的正在运行的设备占比反映在图饼中</p>
 
                 </div>
@@ -256,6 +254,24 @@
               <div class="card card-chart">
                 <div class="card-header card-header-danger" style="height: 300px;display:table">
                   <div id="right" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">不同攻击占比</h4>
+                  <p class="card-category">我们将不同类型的攻击占比反映在图表中</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> <a th:href="@{/log}">查看</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-chart">
+                <div class="card-header card-header-warning" style="height: 300px;display:table">
+                  <div id="bottom" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">不同攻击占比</h4>
@@ -645,7 +661,6 @@
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#ff69b4'}},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#d15fee' }},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#ff3e96' }},
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#da70d6' }},
                                   ]
                               }
                           ]
@@ -701,7 +716,6 @@
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#33a6e1'}},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#10b78f' }},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#3280e1' }},
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#1de15d' }},
                                   ]
                               }
                           ]
@@ -754,9 +768,9 @@
                                   },
                                   avoidLabelOverlap:false,
                                   data:[
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#edee66'}},
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#7eb731' }},
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#b74db6' }}
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#ae3a28'}},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#7b7c65' }},
+                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#cba24b' }}
                                   ]
                               }
                           ]
@@ -765,6 +779,152 @@
               }
           })
       })
+  </script>
+  <script type="text/javascript">
+      var myChart = echarts.init(document.getElementById('bottom'));
+      var dataIPSxAxis = ['2019 05/20  ', '2019 05/24', '2019 05/27', '2019 05/29 ', '2019 05/02 ', '2019 05/08',
+          '2019 05/11',, '2019 05/17', '2019 05/22', '2019 05/29', '2019 06/01', '2019 06/07'];
+      var dataIPS = [20, 60, 50, 80, 120, 100,120,130,140,160,180,190,200];
+      var dataIPS2 = [20, 70, 60, 80, 100, 90,120,170,220,220,240,280,300];
+      option = {
+          tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                  type: 'cross',
+                  label: {
+                      backgroundColor: '#6a7985',
+                  },
+              }
+          },
+          color: ["#A23B2F", "#A24C3E"],
+          grid: {
+              left: '5%',
+              right: '5%',
+              top:'10%',
+              bottom: '5%',
+              containLabel: true
+          },
+          xAxis: [{
+              boundaryGap: false,
+              data: dataIPSxAxis,
+              axisLine: {
+                  show: true,
+                  lineStyle:{
+                      color:'#ffffff'
+                  }
+              },
+              splitLine: {
+                  show: false
+              },
+              axisTick: {
+                  show: false
+              },
+              axisLabel:{
+                  interval:0,
+                  color:'#ffffff',
+                  textStyle:{
+                      show:true,
+                      color:'#ffffff'
+                  }
+              }
+          }],
+          legend:{
+              show:true
+          },
+          yAxis: [{
+              axisLine: {
+                  show: true,
+                  lineStyle:{
+                      color:'#ffffff'
+                  }
+              },
+              splitLine: {
+                  show: false
+              },
+              axisTick: {
+                  show: false
+              },
+              axisLabel:{
+                  color:'#ffffff',
+                  formatter:'{value}W',
+                  textStyle:{
+                      show:true,
+                      color:'#ffffff'
+                  }
+              }
+          }],
+          series: [
+              {
+                  name: '工业控制系统',
+                  type: 'line',
+                  smooth: true,
+                  //  symbol: "none", //去掉折线点
+                  stack: 100,
+                  itemStyle: {
+                      normal: { //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                          color: "#A24C3E",
+                          lineStyle: { // 系列级个性化折线样式
+                              width: 2,
+                              type: 'solid',
+                              color: "#999999"
+                          }
+                      }
+                  }, //线条样式
+                  symbolSize: 5, //折线点的大小
+                  areaStyle: {
+                      normal: {}
+                  },
+                  data: dataIPS,
+              },
+
+              {
+                  name: '路由交换系统',
+                  type: 'line',
+                  smooth: true,
+                  //  symbol: "none", //去掉折线点
+                  stack: 100,
+                  itemStyle: {
+                      normal: { //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                          color: '#A23B2F',
+                          lineStyle: { // 系列级个性化折线样式
+                              width: 2,
+                              type: 'solid',
+                              color: '#FF3300'
+                          }
+                      },
+                  }, //线条样式
+                  symbolSize: 5, //折线点的大小
+                  areaStyle: {
+                      normal: {}
+                  },
+                  data: dataIPS2,
+              },
+              {
+                  name: '视频监控系统',
+                  type: 'line',
+                  smooth: true,
+                  //  symbol: "none", //去掉折线点
+                  stack: 100,
+                  itemStyle: {
+                      normal: { //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                          color: '#A23B2F',
+                          lineStyle: { // 系列级个性化折线样式
+                              width: 2,
+                              type: 'solid',
+                              color: '#FF3300'
+                          }
+                      },
+                  }, //线条样式
+                  symbolSize: 5, //折线点的大小
+                  areaStyle: {
+                      normal: {}
+                  },
+                  data: dataIPS2,
+              }
+          ]
+
+      };
+      myChart.setOption(option);
   </script>
 </body>
 </html>

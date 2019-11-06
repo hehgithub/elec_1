@@ -163,12 +163,6 @@
                     <th>
                       序号
                     </th>
-                    <!--<th>-->
-                      <!--实物ID-->
-                    <!--</th>-->
-                    <th>
-                      设备身份标识ID
-                    </th>
                     <th>
                       类型
                     </th>
@@ -179,32 +173,59 @@
                       型号
                     </th>
                     <th>
+                      MAC
+                    </th>
+                    <th>
                       IP
                     </th>
+                    <th>
+                      状态
+                    </th>
+                    <th>
+                      公钥
+                    </th>
+                    <!--<th>-->
+                      <!--私钥-->
+                    <!--</th>-->
                     <th>
                       注册时间
                     </th>
                     <th>
-                      注销
+                      操作
                     </th>
                     </thead>
                     <tbody>
-                    <!--<tr th:each="device,deviceStart : ${devices}">-->
-                      <!--<td th:text="${deviceStart.count}" ></td>-->
-                      <!--&lt;!&ndash;<td th:text="${device.id}"></td>&ndash;&gt;-->
-                      <!--<td th:text="${device.iden_id}"></td>-->
-                      <!--<td th:text="${device.device_type}"></td>-->
-                      <!--<td th:text="${device.device_brand}"></td>-->
-                      <!--<td th:text="${device.device_version}"></td>-->
-                      <!--<td th:text="${device.ip}"></td>-->
+                    <tr th:each="device,deviceStart : ${devices}">
+                      <td th:text="${deviceStart.count}" ></td>
+                      <td th:text="${device.device_type}"></td>
+                      <td th:text="${device.device_brand}"></td>
+                      <td th:text="${device.device_version}"></td>
+                      <td th:text="${device.mac}"></td>
+                      <td th:text="${device.ip}"></td>
+                      <div th:switch="${device.permit}">
+                        <td th:case="'not'">未注册</td>
+                        <td th:case="'allow'">已注册</td>
+                        <td th:case="'cancel'">已注销</td>
+                      </div>
+                      <td th:text="${device.iden_id}"></td>
+                      <td th:text="${device.time}"></td>
                       <!--<td th:text="${#dates.format(device.register_time, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
-                      <!--<td class="td-actions text-left"><form th:action="@{/delreg/}+${device.mac}" method="get">-->
-                        <!--<input type="hidden" name="_method" value="delete"/>-->
-                        <!--<button type="submit" rel="tooltip" class="btn btn-danger btn-round">-->
-                          <!--<i class="material-icons">close</i>-->
-                        <!--</button></form>-->
-                      <!--</td>-->
-                    <!--</tr>-->
+                      <div th:switch="${device.permit}">
+                        <td th:case="'not'">
+                          <form th:action="@{/register/}+${device.mac}" method="get">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button type="submit" rel="tooltip" class="btn btn-success">
+                             通过
+                            </button></form>
+                        </td>
+                        <td th:case="'allow'"><form th:action="@{/delreg/}+${device.mac}" method="get">
+                          <input type="hidden" name="_method" value="delete"/>
+                          <button type="submit" rel="tooltip" class="btn btn-danger">
+                            注销
+                          </button></form></td>
+                        <td th:case="'cancel'"></td>
+                      </div>
+                    </tr>
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation example">
