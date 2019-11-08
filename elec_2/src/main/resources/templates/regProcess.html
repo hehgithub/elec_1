@@ -98,7 +98,7 @@
         <!--<p>合法设备信息库</p>-->
         <!--</a>-->
         <!--</li>-->
-        <li class="nav-item ">
+        <li class="nav-item active ">
           <a class="nav-link" href="#" th:href="@{/regDev}">
             <i class="material-icons">library_books</i>
             <p>设备注册</p>
@@ -110,7 +110,7 @@
             <p>认证记录</p>
           </a>
         </li>
-        <li class="nav-item active ">
+        <li class="nav-item ">
           <a class="nav-link" href="#" th:href="@{/trans}">
             <i class="material-icons">library_books</i>
             <p>加密传输</p>
@@ -136,7 +136,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo" style="font-size: 18px">加密传输</a>
+          <a class="navbar-brand" href="#pablo" style="font-size: 18px">注册回放</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -203,13 +203,13 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">加密传输</h4>
+                <h4 class="card-title ">注册回放</h4>
               </div>
               <div class="card-body" style="height: 550px">
                 <div class="table-responsive">
                   <div align="center">
 
-                    <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:22px;" th:href="@{#}" class="btn btn-round">加密传输</a> </div>
+                    <div id="content" style="text-align:center;margin:40px auto;"> <a style="font-size:22px;" th:href="@{#}" class="btn btn-round">注册回放</a> </div>
 
                     <div id="alert" class="">
                       <div class="model-head">
@@ -225,74 +225,52 @@
                               </div>
                             </div>
                             <div class="col-md-12" id="flowDiv">
-                              <ol id="iList">
                                 <div class="contentList" id="contA">
-                                  <h5>认证过程开始</h5>
-                                  <!--<h5>接收终端设备发来的随机数密文:</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.receive_costomer_dense}"></h5>-->
+                                  <h5>注册过程开始</h5>
+                                  <h5>生成的设备标识:</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.biaoshi}"></h5>
+                                  <h5>生成协商会话密钥a:</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.ka_step1}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <!--<h5>网关端使用网关私钥钥进行解密得：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.costomer_public_solve}"></h5>-->
+                                  <h5>生成协商会话密钥b：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.kb_step2}"></h5>
                                 </div>
                                 <div class="contentList" id="contC">
-                                  <!--<h5>网关使用将设备 公钥加密，并将该密文发送给终端设备，用于随机数验证</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.sever_public_dense}"></h5>-->
-                                  <h5>一次认证结束</h5>
+                                  <h5>协商会话密钥生成：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.secret_step3}"></h5>
+                                  <h5>设备签名私钥：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.db_sign_step3}"></h5>
+                                  <h5>设备加密私钥：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.db_enc_step3}"></h5>
+                                  <h5>密文</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.send_costomer_enc_step3}"></h5>
                                 </div>
                                 <div class="contentList" id="contD">
-                                  <!--<h5>网关端生成随机数：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.random}"></h5>-->
-                                  <!--<h5>用设备公钥对其加密后得：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.sever_public_twice_dense}"></h5>-->
-                                  <h5>将密文发送给终端，使其解密再加密发送回来</h5>
+                                  <h5>收到客户端发送的密文</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.receive_costomer_enc_step4}"></h5>
+                                  <h5>解密：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.receive_costomer_dec_step4}"></h5>
+                                  <h5>注册完成</h5>
                                 </div>
-                                <div class="contentList" id="contE">
-                                  <!--<h5>接收终端发送回来的密文为：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.receive_costomer2_dense}"></h5>-->
-                                </div>
-                                <div class="contentList" id="contF">
-                                  <!--<h5>网关使用网关私钥将密文解密，获取的明文为：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.costomer_private_solve}"></h5>-->
-                                  <h5>解密后的明文与随机数一致，双向认证成功，开始进行通信</h5>
-                                </div>
-                                <div class="contentList" id="contG">
-                                  <!--<h5>通信前所需的设备信息：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.ID_sever}+'和'+${socket.ID_costomer}"></h5>-->
-                                  <!--<h5>会话密钥：</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.dense}"></h5>-->
-                                </div>
-                                <div class="contentList" id="contH">
-                                  <!--<h5>接收到终端设备发来的密文;</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.socket_dense}"></h5>-->
-                                </div>
-                                <div class="contentList" id="contI">
-                                  <!--<h5>解密后的明文为;</h5><h5 style="width:400px;-->
-                                                               <!--word-wrap: break-word;-->
-                                                               <!--word-break: break-all;-->
-                                                               <!--overflow: hidden;" th:text="${socket.ming}"></h5>-->
-                                </div>
-                              </ol>
                             </div>
                           </div>
                         </div>

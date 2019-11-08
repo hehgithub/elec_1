@@ -29,6 +29,6 @@ public class transController {
 
     @GetMapping("/transReview")
     public String transReview(){
-        return "transProcess";
+        return "regProcess";
     }
 }

@@ -2,6 +2,8 @@ package com.wlwaq.elec_2.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.wlwaq.elec_2.bean.RegRecord;
 import com.wlwaq.elec_2.bean.regDev;
 import com.wlwaq.elec_2.mapper.RegDevMapper;
 import com.wlwaq.elec_2.mapper.RegistMapper;
@@ -47,5 +49,14 @@ public class regDevController {
     public String logout(@PathVariable("mac") String mac){
         regDevMapper.logout(mac);
         return "redirect:/regDev";
+    }
+
+    @GetMapping("/regReview")
+    public String regReview(Model model,
+                            @RequestParam("iden_id")String iden_id){
+        System.out.print(iden_id);
+        RegRecord regRecord = registMapper.getRecord(iden_id);
+        model.addAttribute("regRecord",regRecord);
+        return "regProcess";
     }
 }

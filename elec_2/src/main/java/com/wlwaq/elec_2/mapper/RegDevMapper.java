@@ -35,4 +35,10 @@ public interface RegDevMapper {
 
     @Update("update device_information set permit='cancel' WHERE mac=#{mac}")
     void logout(String mac);
+
+    @Select("select count(id) from device_information")
+    Integer devCount();
+
+    @Select("select count(id) from device_information where permit = 'allow'")
+    Integer regDevCount();
 }

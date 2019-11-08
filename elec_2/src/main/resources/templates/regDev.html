@@ -206,6 +206,9 @@
                     <th>
                       操作
                     </th>
+                    <th>
+                      注册回放
+                    </th>
                     </thead>
                     <tbody>
                     <tr th:each="device,deviceStart : ${page.list}">
@@ -224,19 +227,39 @@
                       <td th:text="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                       <!--<td th:text="${#dates.format(device.register_time, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
                       <div th:switch="${device.permit}">
-                        <td th:case="'not'">
+                        <td class="td-actions text-left" th:case="'not'">
                           <form th:action="@{/register/}+${device.mac}" method="get">
                             <input type="hidden" name="_method" value="delete"/>
                             <button type="submit" rel="tooltip" class="btn btn-success">
                              通过
                             </button></form>
                         </td>
-                        <td th:case="'allow'"><form th:action="@{/logout/}+${device.mac}" method="get">
+                        <td class="td-actions text-left" th:case="'allow'"><form th:action="@{/logout/}+${device.mac}" method="get">
                           <input type="hidden" name="_method" value="delete"/>
                           <button type="submit" rel="tooltip" class="btn btn-danger">
                             注销
                           </button></form></td>
-                        <td th:case="'cancel'"></td>
+                        <td class="td-actions text-left" th:case="'cancel'"><form th:action="@{/register/}+${device.mac}" method="get">
+                          <input type="hidden" name="_method" value="delete"/>
+                          <button type="submit" rel="tooltip" class="btn btn-success">
+                            再注册
+                          </button></form></td>
+                      </div>
+                      <div th:switch="${device.permit}">
+                        <td th:case="'not'" class="td-actions text-left">
+                        </td>
+                        <td th:case="'allow'" class="td-actions text-left"><form th:action="@{/regReview}" method="get">
+                          <input type="hidden" name="iden_id" th:value="${device.iden_id}"/>
+                          <button type="submit" rel="tooltip" class="btn btn-success">
+                            查看回放
+                          </button></form>
+                        </td>
+                        <td th:case="cancel" class="td-actions text-left"><form th:action="@{/regReview}" method="get">
+                          <input type="hidden" name="iden_id" th:value="${device.iden_id}"/>
+                          <button type="submit" rel="tooltip" class="btn btn-success">
+                            查看回放
+                          </button></form>
+                        </td>
                       </div>
                     </tr>
                     </tbody>

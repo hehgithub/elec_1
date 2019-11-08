@@ -227,35 +227,37 @@
                             <div class="col-md-12" id="flowDiv">
                               <!--<ol id="iList">-->
                                 <div class="contentList" id="contA">
-                                  <h5 >随机数为：</h5><h5 style="width:300px;
+                                  <h5 >收到客户端发送的密文：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.random_step1}"></h5>
-                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:500px;
+                                                               overflow: hidden;" th:text="${record.receive_costomer2_dense_step1}"></h5>
+                                  <h5 >解密：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.sever_public_twice_dense_step1}"></h5>
+                                                               overflow: hidden;" th:text="${record.costomer_private_solve_step1}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <h5 >客户端发来密文为：</h5><h5 style="width:500px;
+                                  <h5 >生成随机数为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.receive_costomer2_dense_step2}"></h5>
-                                  <h5 >网关核实随机数为：</h5><h5 style="width:300px;
-                                                               word-wrap: break-word;
-                                                               word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.costomer_private_solve_step2}"></h5>
-                                  <h5 >客户端生成随机数为：</h5><h5 style="width:300px;
+                                                               overflow: hidden;" th:text="${record.random_step2}"></h5>
+                                  <h5 >加密密文为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.costomer_public_solve_step2}"></h5>
                                 </div>
                                 <div class="contentList" id="contC">
-                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:500px;
+                                  <h5 >收到客户端发送密文：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.sever_public_dense_step3}"></h5>
                                 </div>
+                              <div class="contentList" id="contD">
+                                <h5 >解密：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.sever_public_twice_dense_step4}"></h5>
+                              </div>
                               <!--</ol>-->
                             </div>
                           </div>

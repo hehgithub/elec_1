@@ -32,6 +32,8 @@ public class MainController {
     @GetMapping("/main")
     public String dashboard(Model model){
         model.addAttribute("logcount",logMapper.allCount());
+        model.addAttribute("devcount",regDevMapper.devCount());
+        model.addAttribute("regdevcount",regDevMapper.regDevCount());
         return "dashboard";
     }
 
@@ -87,7 +89,7 @@ public class MainController {
                tempandHumiList.add(new TempandHumi(temp,humi,tempHumiList.get(i).getTime()));
            }
         }
-        JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+        JSON.DEFFAULT_DATE_FORMAT = "HH:mm:ss";
         String json = JSON.toJSONString(tempandHumiList,SerializerFeature.WriteDateUseDateFormat);
 
         return json;
