@@ -1,9 +1,13 @@
 package com.wlwaq.elec_2.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.wlwaq.elec_2.bean.Count;
+import com.wlwaq.elec_2.bean.TempHumi;
+import com.wlwaq.elec_2.bean.TempandHumi;
 import com.wlwaq.elec_2.mapper.LogMapper;
 import com.wlwaq.elec_2.mapper.RegDevMapper;
+import com.wlwaq.elec_2.mapper.TransMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +26,10 @@ public class MainController {
     @Autowired
     RegDevMapper regDevMapper;
 
-    @GetMapping("/")
+    @Autowired
+    TransMapper transMapper;
+
+    @GetMapping("/main")
     public String dashboard(Model model){
         model.addAttribute("logcount",logMapper.allCount());
         return "dashboard";
@@ -60,6 +67,29 @@ public class MainController {
         countList.add(new Count("重放攻击",logMapper.cfConut()));
         countList.add(new Count("中间人攻击",logMapper.zjrConut()));
         String json = JSON.toJSONString(countList);
+        return json;
+    }
+
+    @RequestMapping("/chart4")
+    @ResponseBody
+    public String temp_humi(){
+        List<TempHumi> tempHumiList = transMapper.Tlist();
+        List<TempandHumi> tempandHumiList = new ArrayList<>();
+        for (int i=0;i<tempHumiList.size();i++){
+           String ming = tempHumiList.get(i).getMing();
+           if (ming.substring(0,4).equals("temp")){
+               String temp = ming.substring(5,11);
+               String humi = ming.substring(16,22);
+               tempandHumiList.add(new TempandHumi(temp,humi,tempHumiList.get(i).getTime()));
+           }else {
+               String humi = ming.substring(5,11);
+               String temp = ming.substring(16,22);
+               tempandHumiList.add(new TempandHumi(temp,humi,tempHumiList.get(i).getTime()));
+           }
+        }
+        JSON.DEFFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+        String json = JSON.toJSONString(tempandHumiList,SerializerFeature.WriteDateUseDateFormat);
+
         return json;
     }
 }

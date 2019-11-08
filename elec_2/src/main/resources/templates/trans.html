@@ -20,6 +20,25 @@
 
   <link rel="stylesheet" href="" th:href="@{/static/bootstrap/css/bootstrap-theme.min.css}">
   <script src="" th:src="@{/static/bootstrap/js/bootstrap.min.js}" type="application/javascript"></script>
+  <style>
+    .h{
+      transition: all 3s ease;
+      overflow: hidden;
+    }
+    .h10{
+      height: 20px;
+    }
+
+    .h10:hover{
+      height: 50px;
+    }
+    .h20{
+      height: 20px;
+    }
+    .h20:hover{
+      height: 1200px;
+    }
+  </style>
 </head>
 
 <body class="">
@@ -38,7 +57,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" th:href="@{/}">
+          <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
           </a>
@@ -180,11 +199,11 @@
                     </th>
                     </thead>
                     <tbody>
-                    <tr th:each="socket,socketStart : ${sockets}">
-                      <td th:text="${socketStart.count}" ></td>
+                    <tr th:each="socket,socketStart : ${page.list}">
+                      <td th:text="${socketStart.count+(page.getPageNum()-1)*10}" ></td>
                       <!--<td th:text="${device.id}"></td>-->
-                      <td th:text="${socket.ID_costomer}"></td>
-                      <td th:text="${socket.socket_dense}"></td>
+                      <td><div th:text="${socket.ID_costomer}" style="width: 250px" class="h h10"></div></td>
+                      <td><div th:text="${socket.socket_dense}" style="width: 250px" class="h h20"></div></td>
                       <td th:text="${socket.ming}"></td>
                       <td th:text="${#dates.format(socket.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                     </tr>
@@ -192,14 +211,20 @@
                   </table>
                   <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                      <li th:if="${page.getPageNum()} eq 1" class="page-item disabled">
+                        <a class="page-link" href="#">上一页</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
+                      <li th:if="${page.getPageNum() gt 1}" class="page-item">
+                        <a class="page-link" th:href="@{/trans?pageIndex=}+${page.getPrePage()}">上一页</a>
+                      </li>
+                      <th:block th:each="pagenum:${page.navigatepageNums}">
+                        <li th:class="${pagenum==page.getPageNum()}?'page-item disabled':'page-item'"><a th:class="page-link" th:href="@{/trans?pageIndex=}+${pagenum}" th:text="${pagenum}"></a></li>
+                      </th:block>
+                      <li th:if="${page.getPageNum()} eq ${page.getLastPage()}" class="page-item disabled">
                         <a class="page-link" href="#">下一页</a>
+                      </li>
+                      <li th:if="${page.getPageNum()} lt ${page.getLastPage()}" class="page-item">
+                        <a class="page-link" th:href="@{/trans?pageIndex=}+${page.nextPage}">下一页</a>
                       </li>
                     </ul>
                   </nav>

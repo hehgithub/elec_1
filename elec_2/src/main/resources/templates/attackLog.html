@@ -38,7 +38,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" th:href="@{/}">
+          <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
           </a>
@@ -186,7 +186,7 @@
                     <tr th:each="log,logStart:${page.list}">
                       <td th:text="${logStart.count+(page.getPageNum()-1)*10}"></td>
                       <td th:text="${log.type}"></td>
-                      <td th:text="${#dates.format(log.date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                      <td th:text="${#dates.format(log.date,'yyyy-MM-dd HH:mm:ss')}"></td>
                       <td th:text="${log.device_type}"></td>
                       <!--<td th:text="${log.mac}"></td>-->
                       <td th:text="${log.ip}"></td>

@@ -8,6 +8,7 @@ class Elec2ApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

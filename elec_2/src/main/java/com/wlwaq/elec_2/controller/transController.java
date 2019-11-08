@@ -1,6 +1,7 @@
 package com.wlwaq.elec_2.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wlwaq.elec_2.bean.Socket;
 import com.wlwaq.elec_2.mapper.TransMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,10 @@ public class transController {
     @GetMapping("/trans")
     public String trans(Model model,
                         @RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex){
+        PageHelper.startPage(pageIndex,10);
         List<Socket> socketList = transMapper.list();
-        model.addAttribute("sockets",socketList);
+        PageInfo<Socket> pageInfo = new PageInfo<>(socketList);
+        model.addAttribute("page",pageInfo);
         return "trans";
     }
 

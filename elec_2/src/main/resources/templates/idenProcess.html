@@ -81,7 +81,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item ">
-          <a class="nav-link" href="#" th:href="@{/}">
+          <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
           </a>
@@ -225,19 +225,19 @@
                               </div>
                             </div>
                             <div class="col-md-12" id="flowDiv">
-                              <ol id="iList">
+                              <!--<ol id="iList">-->
                                 <div class="contentList" id="contA">
                                   <h5 >随机数为：</h5><h5 style="width:300px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.random_step1}"></h5>
-                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:300px;
+                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.sever_public_twice_dense_step1}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <h5 >客户端发来密文为：</h5><h5 style="width:300px;
+                                  <h5 >客户端发来密文为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.receive_costomer2_dense_step2}"></h5>
@@ -251,12 +251,12 @@
                                                                overflow: hidden;" th:text="${record.costomer_public_solve_step2}"></h5>
                                 </div>
                                 <div class="contentList" id="contC">
-                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:300px;
+                                  <h5 >使用设备公钥加密的密文为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.sever_public_dense_step3}"></h5>
                                 </div>
-                              </ol>
+                              <!--</ol>-->
                             </div>
                           </div>
                         </div>

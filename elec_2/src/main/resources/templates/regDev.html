@@ -20,6 +20,19 @@
 
   <link rel="stylesheet" href="" th:href="@{/static/bootstrap/css/bootstrap-theme.min.css}">
   <script src="" th:src="@{/static/bootstrap/js/bootstrap.min.js}" type="application/javascript"></script>
+  <style>
+    .h{
+      transition: all 3s ease;
+      overflow: hidden;
+    }
+    .h10{
+      height: 20px;
+    }
+
+    .h10:hover{
+      height: 90px;
+    }
+  </style>
 </head>
 
 <body class="">
@@ -38,7 +51,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" th:href="@{/}">
+          <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
           </a>
@@ -195,7 +208,7 @@
                     </th>
                     </thead>
                     <tbody>
-                    <tr th:each="device,deviceStart : ${devices}">
+                    <tr th:each="device,deviceStart : ${page.list}">
                       <td th:text="${deviceStart.count}" ></td>
                       <td th:text="${device.device_type}"></td>
                       <td th:text="${device.device_brand}"></td>
@@ -207,8 +220,8 @@
                         <td th:case="'allow'">已注册</td>
                         <td th:case="'cancel'">已注销</td>
                       </div>
-                      <td th:text="${device.iden_id}"></td>
-                      <td th:text="${device.time}"></td>
+                      <td><div style="width: 150px" th:text="${device.iden_id}" class="h h10"></div></td>
+                      <td th:text="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                       <!--<td th:text="${#dates.format(device.register_time, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
                       <div th:switch="${device.permit}">
                         <td th:case="'not'">
@@ -218,7 +231,7 @@
                              通过
                             </button></form>
                         </td>
-                        <td th:case="'allow'"><form th:action="@{/delreg/}+${device.mac}" method="get">
+                        <td th:case="'allow'"><form th:action="@{/logout/}+${device.mac}" method="get">
                           <input type="hidden" name="_method" value="delete"/>
                           <button type="submit" rel="tooltip" class="btn btn-danger">
                             注销
@@ -230,14 +243,20 @@
                   </table>
                   <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                      <li th:if="${page.getPageNum()} eq 1" class="page-item disabled">
+                        <a class="page-link" href="#">上一页</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
+                      <li th:if="${page.getPageNum() gt 1}" class="page-item">
+                        <a class="page-link" th:href="@{/regDev?pageIndex=}+${page.getPrePage()}">上一页</a>
+                      </li>
+                      <th:block th:each="pagenum:${page.navigatepageNums}">
+                        <li th:class="${pagenum==page.getPageNum()}?'page-item disabled':'page-item'"><a th:class="page-link" th:href="@{/regDev?pageIndex=}+${pagenum}" th:text="${pagenum}"></a></li>
+                      </th:block>
+                      <li th:if="${page.getPageNum()} eq ${page.getLastPage()}" class="page-item disabled">
                         <a class="page-link" href="#">下一页</a>
+                      </li>
+                      <li th:if="${page.getPageNum()} lt ${page.getLastPage()}" class="page-item">
+                        <a class="page-link" th:href="@{/regDev?pageIndex=}+${page.nextPage}">下一页</a>
                       </li>
                     </ul>
                   </nav>

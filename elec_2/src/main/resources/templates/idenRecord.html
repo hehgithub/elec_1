@@ -38,7 +38,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" th:href="@{/}">
+          <a class="nav-link" href="#" th:href="@{/main}">
             <i class="material-icons">dashboard</i>
             <p>首页</p>
           </a>
@@ -180,15 +180,16 @@
                     </th>
                     </thead>
                     <tbody>
-                    <tr th:each="device,deviceStart : ${devices}">
-                      <td th:text="${deviceStart.count}" ></td>
+                    <tr th:each="device,deviceStart : ${page.list}">
+                      <td th:text="${deviceStart.count+(page.getPageNum()-1)*10}" ></td>
                       <!--<td th:text="${device.id}"></td>-->
                       <td th:text="${device.device_type}"></td>
                       <td th:text="${device.ip}"></td>
                       <td th:text="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                       <td th:text="成功"></td>
                       <td class="td-actions text-left"><form th:action="@{/idenReview}" method="get">
-                        <input type="hidden" name="_method" value="delete"/>
+                        <input type="hidden" name="time" th:value="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"/>
+                        <input type="hidden" name="ip" th:value="${device.ip}"/>
                         <button type="submit" rel="tooltip" class="btn btn-success">
                           查看回放
                         </button></form>
@@ -198,14 +199,20 @@
                   </table>
                   <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">上一页</a>
+                      <li th:if="${page.getPageNum()} eq 1" class="page-item disabled">
+                        <a class="page-link" href="#">上一页</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
+                      <li th:if="${page.getPageNum() gt 1}" class="page-item">
+                        <a class="page-link" th:href="@{/idenRecord?pageIndex=}+${page.getPrePage()}">上一页</a>
+                      </li>
+                      <th:block th:each="pagenum:${page.navigatepageNums}">
+                        <li th:class="${pagenum==page.getPageNum()}?'page-item disabled':'page-item'"><a th:class="page-link" th:href="@{/idenRecord?pageIndex=}+${pagenum}" th:text="${pagenum}"></a></li>
+                      </th:block>
+                      <li th:if="${page.getPageNum()} eq ${page.getLastPage()}" class="page-item disabled">
                         <a class="page-link" href="#">下一页</a>
+                      </li>
+                      <li th:if="${page.getPageNum()} lt ${page.getLastPage()}" class="page-item">
+                        <a class="page-link" th:href="@{/idenRecord?pageIndex=}+${page.nextPage}">下一页</a>
                       </li>
                     </ul>
                   </nav>

@@ -30,5 +30,9 @@ public interface RegDevMapper {
     @Select("select count(device_type) from device_information where device_type='电流传感器' and permit='not'")
     Integer dl1Count();
 
+    @Update("update device_information set permit='allow' WHERE mac=#{mac}")
+    void pass(String mac);
 
+    @Update("update device_information set permit='cancel' WHERE mac=#{mac}")
+    void logout(String mac);
 }
