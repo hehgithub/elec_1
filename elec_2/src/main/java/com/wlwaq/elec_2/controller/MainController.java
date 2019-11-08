@@ -41,9 +41,10 @@ public class MainController {
     @ResponseBody
     public String devCount(){
         List<Count> countList = new ArrayList<>();
-        countList.add(new Count("温度传感器",regDevMapper.wdCount()));
-        countList.add(new Count("电流传感器",regDevMapper.dlCount()));
-        countList.add(new Count("IP Camera",regDevMapper.ipCount()));
+        countList.add(new Count("温湿度传感器",regDevMapper.wsdCount()));
+        countList.add(new Count("电流传感器",regDevMapper.dianliuCount()));
+        countList.add(new Count("电压传感器",regDevMapper.dyCount()));
+        countList.add(new Count("烟雾传感器",regDevMapper.ywCount()));
 
         String json = JSON.toJSONString(countList);
         return json;
@@ -53,9 +54,10 @@ public class MainController {
     @ResponseBody
     public String devvCount(){
         List<Count> countList = new ArrayList<>();
-        countList.add(new Count("温度传感器",regDevMapper.wd1Count()));
-        countList.add(new Count("电流传感器",regDevMapper.dl1Count()));
-        countList.add(new Count("IP Camera",regDevMapper.ip1Count()));
+        countList.add(new Count("温湿度传感器",regDevMapper.wsdRegCount()));
+        countList.add(new Count("电流传感器",regDevMapper.dianliuRegCount()));
+        countList.add(new Count("电压传感器",regDevMapper.dyRegCount()));
+        countList.add(new Count("烟雾传感器",regDevMapper.ywRegCount()));
 
         String json = JSON.toJSONString(countList);
         return json;
@@ -67,7 +69,7 @@ public class MainController {
         List<Count> countList = new ArrayList<>();
         countList.add(new Count("假冒攻击",logMapper.jmCount()));
         countList.add(new Count("重放攻击",logMapper.cfConut()));
-        countList.add(new Count("中间人攻击",logMapper.zjrConut()));
+        countList.add(new Count("反射攻击",logMapper.zjrConut()));
         String json = JSON.toJSONString(countList);
         return json;
     }

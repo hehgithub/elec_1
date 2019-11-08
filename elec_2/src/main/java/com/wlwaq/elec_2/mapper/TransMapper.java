@@ -12,6 +12,6 @@ public interface TransMapper {
     @Select("select * from socket")
     List<Socket> list();
 
-    @Select("select ming,time from socket order by time desc limit 10")
+    @Select("select ming,time from socket WHERE ming is not NULL AND ming!='' order by time desc limit 10")
     List<TempHumi> Tlist();
 }

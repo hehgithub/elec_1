@@ -21,6 +21,6 @@ public interface LogMapper {
     @Select("select count(type) from logback where type='重放攻击'")
     Integer cfConut();
 
-    @Select("select count(type) from logback where type='中间人攻击'")
+    @Select("select count(type) from logback where type='反射攻击'")
     Integer zjrConut();
 }

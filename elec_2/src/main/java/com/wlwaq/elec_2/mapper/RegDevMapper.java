@@ -12,24 +12,6 @@ public interface RegDevMapper {
     @Select("select * from device_information")
     List<regDev> list();
 
-    @Select("select count(device_type) from device_information where device_type='IP Camera' and permit='allow'")
-    Integer ipCount();
-
-    @Select("select count(device_type) from device_information where device_type='温度传感器' and permit='allow'")
-    Integer wdCount();
-
-    @Select("select count(device_type) from device_information where device_type='电流传感器' and permit='allow'")
-    Integer dlCount();
-
-    @Select("select count(device_type) from device_information where device_type='IP Camera' and permit='not'")
-    Integer ip1Count();
-
-    @Select("select count(device_type) from device_information where device_type='温度传感器' and permit='not'")
-    Integer wd1Count();
-
-    @Select("select count(device_type) from device_information where device_type='电流传感器' and permit='not'")
-    Integer dl1Count();
-
     @Update("update device_information set permit='allow' WHERE mac=#{mac}")
     void pass(String mac);
 
@@ -41,4 +23,28 @@ public interface RegDevMapper {
 
     @Select("select count(id) from device_information where permit = 'allow'")
     Integer regDevCount();
+
+    @Select("select count(id) from device_information where device_type='温湿度传感器'")
+    Integer wsdCount();
+
+    @Select("select count(id) from device_information where device_type='电流传感器'")
+    Integer dianliuCount();
+
+    @Select("select count(id) from device_information where device_type='电压传感器'")
+    Integer dyCount();
+
+    @Select("select count(id) from device_information where device_type='烟雾传感器'")
+    Integer ywCount();
+
+    @Select("select count(id) from device_information where device_type='温湿度传感器' and permit='allow'")
+    Integer wsdRegCount();
+
+    @Select("select count(id) from device_information where device_type='电流传感器' and permit='allow'")
+    Integer dianliuRegCount();
+
+    @Select("select count(id) from device_information where device_type='电压传感器' and permit='allow'")
+    Integer dyRegCount();
+
+    @Select("select count(id) from device_information where device_type='烟雾传感器' and permit='allow'")
+    Integer ywRegCount();
 }
