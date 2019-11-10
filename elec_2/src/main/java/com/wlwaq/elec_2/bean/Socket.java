@@ -10,4 +10,5 @@ public class Socket {
     private String socket_dense;
     private String ming;
     private Date time;
+    private String ip;
 }

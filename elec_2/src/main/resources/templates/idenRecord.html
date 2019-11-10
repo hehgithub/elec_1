@@ -64,7 +64,7 @@
         <li class="nav-item ">
         <a class="nav-link" href="#" th:href="@{/trans}">
           <i class="material-icons">library_books</i>
-          <p>加密传输</p>
+          <p>传输记录</p>
         </a>
         </li>
         <!--<li class="nav-item ">-->
@@ -164,10 +164,10 @@
                       序号
                     </th>
                     <th>
-                      类型
+                      IP
                     </th>
                     <th>
-                      IP
+                      类型
                     </th>
                     <th>
                       认证时间
@@ -182,9 +182,9 @@
                     <tbody>
                     <tr th:each="device,deviceStart : ${page.list}">
                       <td th:text="${deviceStart.count+(page.getPageNum()-1)*10}" ></td>
+                      <td th:text="${device.ip}"></td>
                       <!--<td th:text="${device.id}"></td>-->
                       <td th:text="${device.device_type}"></td>
-                      <td th:text="${device.ip}"></td>
                       <td th:text="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                       <td th:text="成功"></td>
                       <td class="td-actions text-left"><form th:action="@{/idenReview}" method="get">

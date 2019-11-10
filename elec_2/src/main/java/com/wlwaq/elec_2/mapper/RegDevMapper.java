@@ -47,4 +47,7 @@ public interface RegDevMapper {
 
     @Select("select count(id) from device_information where device_type='烟雾传感器' and permit='allow'")
     Integer ywRegCount();
+
+    @Select("select ip from device_information where iden_id=#{iden_id}")
+    String getIp(String iden_id);
 }

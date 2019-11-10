@@ -83,7 +83,7 @@
         <li class="nav-item active ">
         <a class="nav-link" href="#" th:href="@{/trans}">
           <i class="material-icons">library_books</i>
-          <p>加密传输</p>
+          <p>传输记录</p>
         </a>
         </li>
         <!--<li class="nav-item ">-->
@@ -106,7 +106,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">加密传输</a>
+          <a class="navbar-brand" href="#pablo">传输记录</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
@@ -173,7 +173,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-success">
-                <h4 class="card-title ">加密传输</h4>
+                <h4 class="card-title ">传输记录</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -186,7 +186,7 @@
                       <!--实物ID-->
                     <!--</th>-->
                     <th>
-                      公钥
+                      IP
                     </th>
                     <th>
                       密文
@@ -202,7 +202,7 @@
                     <tr th:each="socket,socketStart : ${page.list}">
                       <td th:text="${socketStart.count+(page.getPageNum()-1)*10}" ></td>
                       <!--<td th:text="${device.id}"></td>-->
-                      <td><div th:text="${socket.ID_costomer}" style="width: 250px" class="h h10"></div></td>
+                      <td><div th:text="${socket.ip}" ></div></td>
                       <td><div th:text="${socket.socket_dense}" style="width: 250px" class="h h20"></div></td>
                       <td th:text="${socket.ming}"></td>
                       <td th:text="${#dates.format(socket.time, 'yyyy-MM-dd HH:mm:ss')}"></td>

@@ -77,7 +77,7 @@
         <li class="nav-item ">
         <a class="nav-link" href="#" th:href="@{/trans}">
           <i class="material-icons">library_books</i>
-          <p>加密传输</p>
+          <p>传输记录</p>
         </a>
         </li>
         <!--<li class="nav-item ">-->
@@ -177,6 +177,9 @@
                       序号
                     </th>
                     <th>
+                      IP
+                    </th>
+                    <th>
                       类型
                     </th>
                     <th>
@@ -184,12 +187,6 @@
                     </th>
                     <th>
                       型号
-                    </th>
-                    <th>
-                      MAC
-                    </th>
-                    <th>
-                      IP
                     </th>
                     <th>
                       状态
@@ -213,11 +210,10 @@
                     <tbody>
                     <tr th:each="device,deviceStart : ${page.list}">
                       <td th:text="${deviceStart.count}" ></td>
+                      <td th:text="${device.ip}"></td>
                       <td th:text="${device.device_type}"></td>
                       <td th:text="${device.device_brand}"></td>
                       <td th:text="${device.device_version}"></td>
-                      <td th:text="${device.mac}"></td>
-                      <td th:text="${device.ip}"></td>
                       <div th:switch="${device.permit}">
                         <td th:case="'not'">未注册</td>
                         <td th:case="'allow'">已注册</td>
