@@ -227,7 +227,11 @@
                             <div class="col-md-12" id="flowDiv">
                                 <div class="contentList" id="contA">
                                   <h5>终端申请注册</h5>
-                                  <h5>生成设备指纹:<h5 th:text="${regRecord.device_type}"></h5></h5>
+                                  <h5>生成设备指纹:</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${regRecord.device_type}+' '+
+                                                               ${regRecord.device_brand}+' '+${regRecord.device_version}+' '+${regRecord.mac}"></h5>
                                   <h5>生成设备标识:</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
