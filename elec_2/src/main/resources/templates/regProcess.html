@@ -226,18 +226,19 @@
                             </div>
                             <div class="col-md-12" id="flowDiv">
                                 <div class="contentList" id="contA">
-                                  <h5>注册过程开始</h5>
-                                  <h5>生成的设备标识:</h5><h5 style="width:500px;
+                                  <h5>终端申请注册</h5>
+                                  <h5>生成设备指纹:<h5 th:text="${regRecord.device_type}"></h5></h5>
+                                  <h5>生成设备标识:</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.biaoshi}"></h5>
-                                  <h5>生成协商会话密钥a:</h5><h5 style="width:500px;
+                                  <h5>网关生成会话密钥参数:</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.ka_step1}"></h5>
                                 </div>
                                 <div class="contentList" id="contB">
-                                  <h5>生成协商会话密钥b：</h5><h5 style="width:500px;
+                                  <h5>终端生成会话密钥参数：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.kb_step2}"></h5>
@@ -247,21 +248,21 @@
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.secret_step3}"></h5>
-                                  <h5>设备签名私钥：</h5><h5 style="width:500px;
+                                  <h5>终端签名私钥：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.db_sign_step3}"></h5>
-                                  <h5>设备加密私钥：</h5><h5 style="width:500px;
+                                  <h5>终端加密私钥：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.db_enc_step3}"></h5>
-                                  <h5>密文</h5><h5 style="width:500px;
+                                  <h5>密文：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.send_costomer_enc_step3}"></h5>
                                 </div>
                                 <div class="contentList" id="contD">
-                                  <h5>收到客户端发送的密文</h5><h5 style="width:500px;
+                                  <h5>收到终端返回的密文</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${regRecord.receive_costomer_enc_step4}"></h5>

@@ -13,4 +13,9 @@ public class RegRecord {
     private String send_costomer_enc_step3;
     private String receive_costomer_enc_step4;
     private String receive_costomer_dec_step4;
+    private String device_type;
+    private String device_brand;
+    private String device_version;
+    private String mac;
+    private String ip;
 }

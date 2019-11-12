@@ -191,9 +191,9 @@
                     <th>
                       状态
                     </th>
-                    <th>
-                      公钥
-                    </th>
+                    <!--<th>-->
+                      <!--公钥-->
+                    <!--</th>-->
                     <!--<th>-->
                       <!--私钥-->
                     <!--</th>-->
@@ -219,7 +219,7 @@
                         <td th:case="'allow'">已注册</td>
                         <td th:case="'cancel'">已注销</td>
                       </div>
-                      <td><div style="width: 150px" th:text="${device.iden_id}" class="h h10"></div></td>
+                      <!--<td><div style="width: 150px" th:text="${device.iden_id}" class="h h10"></div></td>-->
                       <td th:text="${#dates.format(device.time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                       <!--<td th:text="${#dates.format(device.register_time, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
                       <div th:switch="${device.permit}">
@@ -238,7 +238,7 @@
                         <td class="td-actions text-left" th:case="'cancel'"><form th:action="@{/register/}+${device.mac}" method="get">
                           <input type="hidden" name="_method" value="delete"/>
                           <button type="submit" rel="tooltip" class="btn btn-success">
-                            再注册
+                            通过
                           </button></form></td>
                       </div>
                       <div th:switch="${device.permit}">
