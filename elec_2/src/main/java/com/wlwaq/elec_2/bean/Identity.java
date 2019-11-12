@@ -18,4 +18,5 @@ public class Identity {
     private String H_Rb_step1;
     private String H_Ra_step2;
     private String status;
+    private String dense;
 }

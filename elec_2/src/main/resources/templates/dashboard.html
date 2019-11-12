@@ -235,7 +235,7 @@
                   <div id="center" style="display: table-cell;vertical-align: middle;height: 300px; width: 300px"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">注册设备占比</h4>
+                  <h4 class="card-title">设备状态占比</h4>
 
                 </div>
                 <div class="card-footer">
@@ -691,7 +691,7 @@
                           },
                           series: [
                               {
-                                  name:'设备类型',
+                                  name:'设备状态',
                                   type:'pie',
                                   radius: ['60%', '30%'],
                                   itemStyle:{
@@ -710,7 +710,6 @@
                                   data:[
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#096a70'}},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#0d93ac' }},
-                                      {value:nums.pop(), name:names.pop(),itemStyle: { color: '#08b0c5' }},
                                       {value:nums.pop(), name:names.pop(),itemStyle: { color: '#145d98' }},
                                   ]
                               }

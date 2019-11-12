@@ -24,6 +24,12 @@ public interface RegDevMapper {
     @Select("select count(id) from device_information where permit = 'allow'")
     Integer regDevCount();
 
+    @Select("select count(id) from device_information where permit = 'not'")
+    Integer unregDevCount();
+
+    @Select("select count(id) from device_information where permit = 'cancel'")
+    Integer disregDevCount();
+
     @Select("select count(id) from device_information where device_type='温湿度传感器'")
     Integer wsdCount();
 
@@ -35,18 +41,6 @@ public interface RegDevMapper {
 
     @Select("select count(id) from device_information where device_type='烟雾传感器'")
     Integer ywCount();
-
-    @Select("select count(id) from device_information where device_type='温湿度传感器' and permit='allow'")
-    Integer wsdRegCount();
-
-    @Select("select count(id) from device_information where device_type='电流传感器' and permit='allow'")
-    Integer dianliuRegCount();
-
-    @Select("select count(id) from device_information where device_type='电压传感器' and permit='allow'")
-    Integer dyRegCount();
-
-    @Select("select count(id) from device_information where device_type='烟雾传感器' and permit='allow'")
-    Integer ywRegCount();
 
     @Select("select ip from device_information where iden_id=#{iden_id}")
     String getIp(String iden_id);

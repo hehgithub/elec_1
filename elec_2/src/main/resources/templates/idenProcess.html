@@ -227,36 +227,54 @@
                             <div class="col-md-12" id="flowDiv">
                               <!--<ol id="iList">-->
                                 <div class="contentList" id="contA">
+                                  <h5 >设备指纹采集：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.device_type}+' '+${record.device_brand}+' '+${record.device_version}+' '+${record.mac}"></h5>
+                                  <h5>设备是否合法：</h5><h5 th:text="${record.status}"></h5>
+                                </div>
+                                <div class="contentList" id="contB">
+                                  <h5 >解密获得终端发送的随机数：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.costomer_private_solve_step1}"></h5>
+                                  <h5 >解密获得终端发送的协商密钥参数：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.h_Rb_step1}"></h5>
                                   <h5 >收到终端认证请求密文：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.receive_costomer2_dense_step1}"></h5>
-                                  <h5 >解密：</h5><h5 style="width:500px;
-                                                               word-wrap: break-word;
-                                                               word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.costomer_private_solve_step1}"></h5>
                                 </div>
-                                <div class="contentList" id="contB">
+                                <div class="contentList" id="contC">
                                   <h5 >网关生成随机数为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.random_step2}"></h5>
+                                  <h5 >网关生成协商密钥参数为：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.h_Ra_step2}"></h5>
                                   <h5 >加密密文为：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.costomer_public_solve_step2}"></h5>
-                                </div>
-                                <div class="contentList" id="contC">
-                                  <h5 >收到终端发送密文：</h5><h5 style="width:500px;
-                                                               word-wrap: break-word;
-                                                               word-break: break-all;
-                                                               overflow: hidden;" th:text="${record.sever_public_dense_step3}"></h5>
+
                                 </div>
                               <div class="contentList" id="contD">
-                                <h5 >解密：</h5><h5 style="width:500px;
+                                <h5 >解密获得终端发送的随机数：</h5><h5 style="width:500px;
                                                                word-wrap: break-word;
                                                                word-break: break-all;
                                                                overflow: hidden;" th:text="${record.sever_public_twice_dense_step4}"></h5>
+                                <h5 >会话密钥生成：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.dense}"></h5>
+                                <h5 >收到终端发送密文：</h5><h5 style="width:500px;
+                                                               word-wrap: break-word;
+                                                               word-break: break-all;
+                                                               overflow: hidden;" th:text="${record.sever_public_dense_step3}"></h5>
                               </div>
                               <!--</ol>-->
                             </div>

@@ -54,10 +54,9 @@ public class MainController {
     @ResponseBody
     public String devvCount(){
         List<Count> countList = new ArrayList<>();
-        countList.add(new Count("温湿度传感器",regDevMapper.wsdRegCount()));
-        countList.add(new Count("电流传感器",regDevMapper.dianliuRegCount()));
-        countList.add(new Count("电压传感器",regDevMapper.dyRegCount()));
-        countList.add(new Count("烟雾传感器",regDevMapper.ywRegCount()));
+        countList.add(new Count("注册设备",regDevMapper.regDevCount()));
+        countList.add(new Count("注销设备",regDevMapper.disregDevCount()));
+        countList.add(new Count("未注册设备",regDevMapper.unregDevCount()));
 
         String json = JSON.toJSONString(countList);
         return json;
